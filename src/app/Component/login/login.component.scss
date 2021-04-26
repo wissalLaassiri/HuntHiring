@@ -46,6 +46,7 @@ h3{
     align-items: center;
     flex-direction: column;
     width: 55%;
+    margin-top: -2%;
 }
 .image{
     width: 55%;
@@ -108,7 +109,7 @@ input{
 }
 .btn{
     margin-top: 20px;
-    width: 200px;
+    width: 120px;
     height: 50px;
     border-radius: 40px;
     outline: none;
@@ -197,4 +198,8 @@ input[type="number"]{
         position: static;
         transform: translate(0,0);
     }
+}
+
+a{
+    color: #d18aab;
 }
