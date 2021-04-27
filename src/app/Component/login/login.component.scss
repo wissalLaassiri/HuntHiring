@@ -31,7 +31,7 @@ h3{
 }
 
 .container{
-    width: 80%;
+    width: 160%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -39,7 +39,6 @@ h3{
     height: 90vh;
     background-color: #ffffff;
     display: flex;
-    box-shadow: 5px 10px 38px rgba(0,0,0,0.2);
 }
 .form{
     display: flex;
@@ -51,7 +50,7 @@ h3{
 }
 .image{
     width: 55%;
-    margin-left: -12.5%;
+    margin-left: -6.5%;
     margin-top: 11%;
 }
 .img{
