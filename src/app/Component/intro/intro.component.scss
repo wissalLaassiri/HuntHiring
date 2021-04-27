@@ -1,10 +1,11 @@
 nav {
-  height: 80px;
+  height: auto;
+
 }
 
 .logo {
   width: 180px;
-  height: 80px;
+  height: 100px;
   background: white;
 }
 
@@ -70,20 +71,34 @@ img {
 .card {
   flex-direction: row;
   align-items: center;
-  margin-left: 28px;
+  margin-left: 20px;
 }
 .card-title {
   font-weight: bold;
 }
 .card img {
-  width: 45%;
+  width: 40%;
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 @media only screen and (max-width: 768px) {
-  a {
-    display: none;
-  }
+  
+  .logo {
+    height: auto;
+    width:70px;
+}
+.navbar{
+  height: auto;
+  padding: 30px;
+  margin-right:-78px;
+}
+.btn-hh {
+  margin-right: -15px;
+}
+.card{
+  margin-left: 18px;
+  margin-right:-50px;
+}
   .card-body {
     padding: 0.5em 1.2em;
   }
