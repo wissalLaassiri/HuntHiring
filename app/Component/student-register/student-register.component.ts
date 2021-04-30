@@ -3,11 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MustMatch } from 'src/_helpers/must-match.validator';
 
 @Component({
-  selector: 'app-company-register',
-  templateUrl: './company-register.component.html',
-  styleUrls: ['./company-register.component.css']
+  selector: 'app-student-register',
+  templateUrl: './student-register.component.html',
+  styleUrls: ['./student-register.component.scss']
 })
-export class CompanyRegisterComponent implements OnInit {
+export class StudentRegisterComponent implements OnInit {
   registerForm = new FormGroup({ firstName: new FormControl(''),lastName: new FormControl(''),email: new FormControl(''),password: new FormControl(''),confirmPassword: new FormControl('')});
   submitted = false;
   constructor(private FormBuilder: FormBuilder) { }
