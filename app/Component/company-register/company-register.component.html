@@ -51,6 +51,38 @@
         </div>
       </div>
       <div class="wrap2">
+        <label for="">City</label>
+        <input type="text" name="city" id="city" formControlName="city" class="form-Control" [ngClass]="{'is-invalid': submitted && f.city.errors}">
+        <span class="focus-input2"></span>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">
+            City is required
+          </div>
+        </div>
+      </div>
+      
+      <div class="wrap2">
+        <label for="">Company website</label>
+        <input type="text" name="website" id="website" formControlName="website" class="form-Control" [ngClass]="{'is-invalid': submitted && f.website.errors}">
+        <span class="focus-input2"></span>
+        <div *ngIf="submitted && f.website.errors" class="invalid-feedback">
+          <div *ngIf="f.website.errors.required">
+            Company Website is required
+          </div>
+        </div>
+      </div>
+      <div class="wrap2">
+        <label for="">LinkedIn</label>
+        <input type="text" name="linkedin" id="linked" formControlName="linkedin" class="form-Control" [ngClass]="{'is-invalid': submitted && f.linkedin.errors}">
+        <span class="focus-input2"></span>
+        <div *ngIf="submitted && f.linkedin.errors" class="invalid-feedback">
+          <div *ngIf="f.linkedin.errors.required">
+            LinkedIn is required
+          </div>
+        </div>
+      </div>
+      <div class="wrap">
+      <div class="f1">
         <label for="">Password</label>
         <input type="password" name="password" id="password" formControlName="password" class="form-Control" [ngClass]="{'is-invalid': submitted && f.password.errors}">
         <span class="focus-input2"></span>
@@ -61,21 +93,21 @@
           <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
-      <div class="wrap2">
-        <label for="">Confirm Password</label>
-        <input type="password" name="confirmpassword" id="confirmpassword" formControlName="confirmPassword" class="form-Control" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors}">
+      <div class="f2">
+        <label for="">Confirm Password</label>        <input type="password" name="confirmpassword" id="confirmpassword" formControlName="confirmPassword" class="form-Control" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors}">
         <span class="focus-input2"></span>
         <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
           <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
       </div>
       </div>
+    </div>
       <button class="btn">Register</button>
     
     </form>
     </div>
       <div class="image">
-        <img src="../../assets/register comany.jpg" alt="">
+        <img src="../../assets/registercomany.png" alt="">
       </div>
     
   </div>
