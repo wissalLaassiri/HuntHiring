@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { IntroComponent } from './Component/intro/intro.component';
 import { HomeComponent } from './Component/home/home.component';
 import { LoginComponent } from './Component/login/login.component';
-
+import { CompanyRegisterComponent } from './Component/company-register/company-register.component';
+import { StudentRegisterComponent } from './Component/student-register/student-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroComponent,
     HomeComponent,
-    LoginComponent
-
+    LoginComponent,
+    CompanyRegisterComponent,
+    StudentRegisterComponent
   ],
+  
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
