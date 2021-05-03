@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MustMatch } from '../../../_helpers/must-match.validator';
-
 @Component({
   selector: 'app-company-register',
   templateUrl: './company-register.component.html',
