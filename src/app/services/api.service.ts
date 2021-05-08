@@ -30,18 +30,16 @@ export class ApiService {
   }
 
   //Sign-In
-  login(username: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     return this.http.post(this.endpoint + '/token/', {
-      username,
+      email,
       password
     }, this.httpOptions);
   }
 
   // Sign-up
-  addUser(user:User,flag_comp:boolean,flag_stud:boolean): Observable<User> {
-    user.is_entreprise = flag_comp;
-    user.is_student = flag_stud;
-    return this.http.post<HttpResponse<User>>(this.endpoint + '/student/create/', JSON.stringify(user), this.httpOptions)
+  addUser(user:User,url:string): Observable<User> {
+    return this.http.post<HttpResponse<User>>(this.endpoint + url, JSON.stringify(user), this.httpOptions)
     .pipe(
       map((response)=>{
         return response.body
@@ -50,8 +48,6 @@ export class ApiService {
       catchError(this.handleError)
     )
   }  
-
-  
 
   getToken() {
     return localStorage.getItem('access_token');
@@ -76,19 +72,19 @@ handleError(error: HttpErrorResponse) {
     // client-side error
    // msg = error.error.message;
    if(error.error['email'] != null ){
-    msg['email'] = error.error['email'];
+    msg['email'] = error.error['email'][0];
   }
   if(error.error['username'] != null ){
-    msg ['username']= error.error['username'];
+    msg ['username']= error.error['username'][0];
   }
   if(error.error['first_name'] != null ){
-    msg ['first_name']= error.error['first_name'];
+    msg ['first_name']= error.error['first_name'][0];
   }
   if(error.error['last_name'] != null ){
-    msg ['last_name']= error.error['last_name'];
+    msg ['last_name']= error.error['last_name'][0];
   }
   if(error.error['password'] != null ){
-    msg ['password']= error.error['password'];
+    msg ['password']= error.error['password'][0];
   }
   
   

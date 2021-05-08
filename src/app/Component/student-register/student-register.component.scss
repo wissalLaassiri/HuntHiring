@@ -25,17 +25,21 @@ input{
     font-weight: 400;
     color: #5D2A42 ;
 }
+.heading h3{
+    color: #5D2A42;
+    text-align: center;
+}
 
 .container{
-    width: 80%;
-    margin-top: 30px;
+    width: 160%;
     position: absolute;
+    margin-top: 50px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    height: 80vh;
     background-color: #ffffff;
     display: flex;
-    /*box-shadow: 5px 10px 38px rgba(0,0,0,0.2);*/
 }
 .form{
     display: flex;
@@ -43,6 +47,7 @@ input{
     align-items: center;
     flex-direction: column;
     width: 55%;
+    margin-top: -5%;
 }
 .image{
     width: 50%;

@@ -3,22 +3,26 @@
 </nav>
 
 <div class="container">
-  <div class="form-group">
+  <div class="form ">
+    <div class="heading">
+      <h3>Sign Up As Student</h3>
+      <br />
+    </div>
     <div class="wrap">
       <div class="f1">
         <label for="">First Name</label>
         <input [(ngModel)]="userObj.first_name" class="form-control" placeholder="FirstName" required>
         <span class="focus-input"></span>
-        <div *ngIf="formError['first_name']" class="alert alert-warning">
-          <strong> {{formError['first_name'][0] | json}}</strong>
+        <div *ngIf="formError['first_name']" class="invalid-feedback d-block">
+          <strong> {{formError['first_name'] | json}}</strong>
         </div>
       </div>
       <div class="f2">
         <label for="">Last Name</label>
         <input [(ngModel)]="userObj.last_name" class="form-control" placeholder="LastName" required>
         <span class="focus-input"></span>
-        <div *ngIf="formError['last_name']" class="alert alert-warning">
-          <strong> {{formError['last_name'][0] | json}}</strong>
+        <div *ngIf="formError['last_name']" class="invalid-feedback d-block">
+          <strong> {{formError['last_name'] | json}}</strong>
         </div>
       </div>
     </div>
@@ -26,24 +30,24 @@
       <label for="">E-mail</label>
       <input [(ngModel)]="userObj.email" type="email" class="form-control" placeholder="Email" required >
       <span class="focus-input2"></span>
-      <div *ngIf="formError['email']" class="alert alert-warning">
-        <strong> {{formError['email'][0] | json}}</strong>
+      <div *ngIf="formError['email']" class="invalid-feedback d-block">
+        <strong> {{formError['email'] | json}}</strong>
       </div>
     </div>
     <div class="wrap2">
       <label for="">Username</label>
       <input [(ngModel)]="userObj.username" class="form-control" placeholder="Username" required>
       <span class="focus-input2"></span>
-      <div *ngIf="formError['username']" class="alert alert-warning">
-        <strong> {{formError['username'][0] | json}}</strong>
+      <div *ngIf="formError['username']" class="invalid-feedback d-block">
+        <strong> {{formError['username'] | json}}</strong>
       </div>
     </div>
     <div class="wrap2">
       <label for="">Password</label>
       <input [(ngModel)]="userObj.password" type="password" class="form-control" placeholder="Password" required>
       <span class="focus-input2"></span>
-      <div *ngIf="formError['password']" class="alert alert-warning">
-        <strong> {{formError['password'][0] | json}}</strong>
+      <div *ngIf="formError['password']" class="invalid-feedback d-block">
+        <strong> {{formError['password'] | json}}</strong>
       </div>
     </div>
     <button class="btn" (click)="addUser(userObj)">Register</button>

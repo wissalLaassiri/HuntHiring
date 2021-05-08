@@ -1,11 +1,18 @@
+
+
+<nav class="navbar navbar-fixed-top">
+  <a routerLink=""><img src="../../../assets/img/logo.png" class="logo" alt=""></a>
+</nav>
+
 <div class="container">
     <div class="form">
-      <form action="GET" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="heading">
-        <strong>
-          <a href=""
-            ><img src="../../../assets/img/hunthiring.png" class="logo" alt=""
-          /></a> </strong><br />
+      <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >      <div class="heading">
         <h3>Sign In</h3>
         <br />
       </div>
@@ -13,32 +20,27 @@
       <div class="wrap2">
         <label for="">E-mail</label>
         <input
-              type="text"
-              name="email"
-              id="email"
-              formControlName="email"
-              class="form-Control"
-              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-            />
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="form.email"
+        required
+        #email="ngModel"
+      />
         <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">E-mail is required</div>
-          <div *ngIf="f.email.errors.email">
-            Email must be a valid email address
-          </div>
-        </div>
       </div>
   
       <div class="wrap2">
         <label for="">Password</label>
         <input
-        type="password"
-        name="password"
-        id="password"
-        formControlName="password"
-        class="form-Control"
-        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-      />
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          #password="ngModel"
+        />
+      
       <span class="focus-input2"></span>
      
       </div>

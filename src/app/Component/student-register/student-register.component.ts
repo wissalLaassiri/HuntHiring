@@ -12,6 +12,7 @@ import {ApiService} from '../../services/api.service';
 export class StudentRegisterComponent implements OnInit {
 
   form: FormGroup;
+  url = '';
   //submitted = false;
   formError = {first_name:'',last_name:'', username: '', email: '', password: ''};
 
@@ -39,14 +40,14 @@ export class StudentRegisterComponent implements OnInit {
   }
 
   addUser(data: any) {
-  // this.formError = {email:'',username:''};
-  //this.userObj.is_student = true;
-    this.authService.addUser(this.userObj,false,true).subscribe((response) => {
+    this.url = '/student/create/';
+    //this.userObj.is_student = true;
+    this.authService.addUser(this.userObj,this.url).subscribe((response) => {
      console.log(response.email)
       this.router.navigate(['/login'])
     },
     (error) => {
-      if(error!="") this.formError = error;
+       this.formError = error;
     })
   }
  /*  submit(): void {

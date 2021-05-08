@@ -11,6 +11,7 @@ import {ApiService} from '../../services/api.service';
 })
 export class CompanyRegisterComponent implements OnInit {
   form: FormGroup;
+  url = '';
   formError = {first_name:'',last_name:'', username: '', email: '', password: ''};
  // submitted = false;
 
@@ -39,15 +40,16 @@ export class CompanyRegisterComponent implements OnInit {
   }
 
   addUser(data: any) {
-    
-    this.authService.addUser(this.userObj,true,false).subscribe((response) => {
+    this.url = '/entreprise/create/'
+    this.authService.addUser(this.userObj,this.url).subscribe((response) => {
      console.log(response.email)
       this.router.navigate(['/login'])
     },
     (error) => {
-      if(error!="") this.formError = error;
+      this.formError = error;
     })
   }
+  
   /* submit(): void {
     this.submitted = true;
     if(this.form.invalid){
