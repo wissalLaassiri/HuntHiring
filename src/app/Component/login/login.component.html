@@ -1,26 +1,48 @@
-<body>
-  <div class="container">
+<div class="container">
     <div class="form">
+      <form action="GET" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="heading">
         <strong>
-          <a routerLink=""
+          <a href=""
             ><img src="../../../assets/img/hunthiring.png" class="logo" alt=""
           /></a> </strong><br />
         <h3>Sign In</h3>
         <br />
       </div>
-
+  
       <div class="wrap2">
         <label for="">E-mail</label>
-        <input type="email" name="email" id="email" />
+        <input
+              type="text"
+              name="email"
+              id="email"
+              formControlName="email"
+              class="form-Control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
         <span class="focus-input2"></span>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">E-mail is required</div>
+          <div *ngIf="f.email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
       </div>
-
+  
       <div class="wrap2">
         <label for="">Password</label>
-        <input type="password" name="password" id="password" />
-        <span class="focus-input2"></span>
+        <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+        class="form-Control"
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+      />
+      <span class="focus-input2"></span>
+     
       </div>
+  
       <button class="btn" name="login" type="submit">Log In</button><br />
       <div class="etc-login-form">
         <p>forgot your password? <a href="#">click here</a></p>
@@ -28,9 +50,10 @@
       <div class="etc-login-form">
         <p>you don't have an account yet? <a href="#">Register</a></p>
       </div>
+      </form>
     </div>
     <div class="image">
       <img src="../../../assets/img/target.png" alt="" class="w-150" />
     </div>
   </div>
-</body>
+  

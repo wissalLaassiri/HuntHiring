@@ -29,10 +29,10 @@ input{
 .container{
     width: 80%;
     position: absolute;
+    margin-top: 30px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    height: 90vh;
     background-color: #ffffff;
     display: flex;
     /*box-shadow: 5px 10px 38px rgba(0,0,0,0.2);*/
@@ -200,3 +200,11 @@ input:focus .focus-input2::before{
         transform: translate(0,0);
     }
 }
+
+.alert-warning {
+    color: #5d3164;
+    background-color: #ede8ee;
+    border-color: #ede8ee;
+    width: 300px;
+}
+  

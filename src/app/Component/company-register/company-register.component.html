@@ -1,116 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register As Student</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
+
+
+  <nav class="navbar navbar-fixed-top">
+    <a routerLink=""><img src="../../../assets/img/logo.png" class="logo" alt=""></a>
+  </nav>
+  
   <div class="container">
-    <div class="form">
-    <form action="GET"  [formGroup]="registerForm" (ngSubmit) = "onSubmit()">
-      
-      <div class="heading">
-        <a routerLink="">
-        <img src="../../assets/img/hunthiring.png" alt="" class="logo"></a>
-        <h1>Register as a Company</h1>
-      </div>
+    <div class="form-group">
       <div class="wrap">
         <div class="f1">
           <label for="">First Name</label>
-          <input type="text" name="firstname" id="firstname" formControlName="firstName" class="form-Control" [ngClass]="{'is-invalid': submitted && f.firstName.errors}">
+          <input [(ngModel)]="userObj.first_name" class="form-control" placeholder="FirstName" required>
           <span class="focus-input"></span>
-          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">
-              First Name is required
-            </div>
+          <div *ngIf="formError['first_name']" class="alert alert-warning">
+            <strong> {{formError['first_name'][0] | json}}</strong>
           </div>
         </div>
         <div class="f2">
           <label for="">Last Name</label>
-          <input type="text" name="lastName" id="LastName" formControlName="lastName" class="form-Control" [ngClass]="{'is-invalid': submitted && f.lastName.errors}">
+          <input [(ngModel)]="userObj.last_name" class="form-control" placeholder="LastName" required>
           <span class="focus-input"></span>
-          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">
-              Last Name is required
-            </div>
+          <div *ngIf="formError['last_name']" class="alert alert-warning">
+            <strong> {{formError['last_name'][0] | json}}</strong>
           </div>
         </div>
       </div>
       <div class="wrap2">
         <label for="">E-mail</label>
-        <input type="text" name="email" id="email" formControlName="email" class="form-Control" [ngClass]="{'is-invalid': submitted && f.email.errors}">
+        <input [(ngModel)]="userObj.email" type="email" class="form-control" placeholder="Email" required >
         <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">
-            E-mail is required
-          </div>
-          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        <div *ngIf="formError['email']" class="alert alert-warning">
+          <strong> {{formError['email'][0] | json}}</strong>
         </div>
       </div>
       <div class="wrap2">
-        <label for="">City</label>
-        <input type="text" name="city" id="city" formControlName="city" class="form-Control" [ngClass]="{'is-invalid': submitted && f.city.errors}">
+        <label for="">Username</label>
+        <input [(ngModel)]="userObj.username" class="form-control" placeholder="Username" required>
         <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
-          <div *ngIf="f.city.errors.required">
-            City is required
-          </div>
-        </div>
-      </div>
-      
-      <div class="wrap2">
-        <label for="">Company website</label>
-        <input type="text" name="website" id="website" formControlName="website" class="form-Control" [ngClass]="{'is-invalid': submitted && f.website.errors}">
-        <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.website.errors" class="invalid-feedback">
-          <div *ngIf="f.website.errors.required">
-            Company Website is required
-          </div>
+        <div *ngIf="formError['username']" class="alert alert-warning">
+          <strong> {{formError['username'][0] | json}}</strong>
         </div>
       </div>
       <div class="wrap2">
-        <label for="">LinkedIn</label>
-        <input type="text" name="linkedin" id="linked" formControlName="linkedin" class="form-Control" [ngClass]="{'is-invalid': submitted && f.linkedin.errors}">
-        <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.linkedin.errors" class="invalid-feedback">
-          <div *ngIf="f.linkedin.errors.required">
-            LinkedIn is required
-          </div>
-        </div>
-      </div>
-      <div class="wrap">
-      <div class="f1">
         <label for="">Password</label>
-        <input type="password" name="password" id="password" formControlName="password" class="form-Control" [ngClass]="{'is-invalid': submitted && f.password.errors}">
+        <input [(ngModel)]="userObj.password" type="password" class="form-control" placeholder="Password" required>
         <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">
-            Password is required
-          </div>
-          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        <div *ngIf="formError['password']" class="alert alert-warning">
+          <strong> {{formError['password'][0] | json}}</strong>
         </div>
       </div>
-      <div class="f2">
-        <label for="">Confirm Password</label>        <input type="password" name="confirmpassword" id="confirmpassword" formControlName="confirmPassword" class="form-Control" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors}">
-        <span class="focus-input2"></span>
-        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-          <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-          <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
-      </div>
-      </div>
-    </div>
-      <button class="btn">Register</button>
     
-    </form>
+      <button class="btn" (click)="addUser(userObj)">Register</button>
+    
     </div>
       <div class="image">
         <img src="../../assets/img/register comany.jpg" alt="">
       </div>
     
   </div>
-</body>
-</html>	
+  
