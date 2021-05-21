@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { IntroComponent } from './Component/intro/intro.component';
 import { HomeComponent } from './Component/home/home.component';
 import { LoginComponent } from './Component/login/login.component';
-import { CompanyRegisterComponent} from './Component/company-register/company-register.component';
-import { StudentRegisterComponent} from './Component/student-register/student-register.component';
+import { CompanyRegisterComponent} from './Component/Company/company-register/company-register.component';
+import { StudentRegisterComponent} from './Component/Student/student-register/student-register.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 
 import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { AuthInterceptor } from './services/api.interceptor';
-import { JwtModule } from '@auth0/angular-jwt';
+import { CompHomeComponent } from './Component/Company/comp-home/comp-home.component';
+import { CompHeaderComponent } from './Component/Company/comp-header/comp-header.component';
+import { authInterceptorProviders } from './services/Authentification/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { JwtModule } from '@auth0/angular-jwt';
     HomeComponent,
     LoginComponent,
     CompanyRegisterComponent,
-    StudentRegisterComponent
+    StudentRegisterComponent,
+    CompHomeComponent,
+    CompHeaderComponent
   ],
   
   imports: [
@@ -30,7 +33,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

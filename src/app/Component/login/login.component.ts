@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { MustMatch } from '../../../_helpers/must-match.validator';
 import { TokenStorageService } from '../../services/token-storage.service';
-import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/Authentification/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,11 +13,12 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  type: string = "";
   form: any = { email: '', password: '' };
+  is_company = false;
   submitted = false;
   constructor(
-    private authService: ApiService,
+    private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
   ) {}
@@ -31,7 +26,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
@@ -42,15 +36,32 @@ export class LoginComponent implements OnInit {
       (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        console.log("tokeen "+this.tokenStorage.getToken())
-        this.router.navigate(['/index']);
+        //this.is_company = this.tokenStorage.getUser().is_entreprise;
+        if (this.isLoggedIn) {
+          this.authService.getRole('/company/me/').subscribe((res) => {
+             this.type= JSON.stringify(res);
+              console.log("types 2 "+ this.type);
+              this.router.navigate(['/company/home']);
+           
+         },
+         (err)=>{
+           if(err==="Not found."){
+             console.log(err);
+             this.authService.getRole('/student/me/').subscribe((res) => {
+              this.type= JSON.stringify(res['body']['type']);
+               console.log("types 2 "+ this.type);
+               this.router.navigate(['/index']);
+             
+            });
+            }
+         });
+         }
       },
       (err) => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err;
+        console.log('erooor ', this.errorMessage);
         this.isLoginFailed = true;
       }
     );
@@ -60,10 +71,3 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 }
-/*  onSubmit(){
-    this.submitted = true;
-    if(this.loginForm.invalid){
-      return;
-    }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
-  } */

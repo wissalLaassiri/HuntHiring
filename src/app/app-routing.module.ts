@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Component/login/login.component';
 import { IntroComponent } from './Component/intro/intro.component';
 import { HomeComponent } from './Component/home/home.component';
-import {StudentRegisterComponent} from './Component/student-register/student-register.component';
-import { CompanyRegisterComponent } from './Component/company-register/company-register.component';
-
+import {StudentRegisterComponent} from './Component/Student/student-register/student-register.component';
+import { CompanyRegisterComponent } from './Component/Company/company-register/company-register.component';
+import {CompHomeComponent} from './Component/Company/comp-home/comp-home.component';
 const routes: Routes = [
   {
     path: '',
@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path: 'company',
     component:CompanyRegisterComponent
+  },
+  {
+    path: 'company/home',
+    component:CompHomeComponent
   }
 ];
 @NgModule({

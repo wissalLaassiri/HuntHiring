@@ -1,25 +1,25 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit,Input} from '@angular/core';
+import {FormBuilder, FormGroup,Validators,FormsModule} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {ApiService} from '../../services/api.service';
+import {AuthService} from '../../../services/Authentification/auth.service';
 
 @Component({
-  selector: 'app-company-register',
-  templateUrl: './company-register.component.html',
-  styleUrls: ['./company-register.component.scss']
+  selector: 'app-student-register',
+  templateUrl: './student-register.component.html',
+  styleUrls: ['./student-register.component.scss']
 })
-export class CompanyRegisterComponent implements OnInit {
+export class StudentRegisterComponent implements OnInit {
+
   form: FormGroup;
   url = '';
+  //submitted = false;
   formError = {first_name:'',last_name:'', username: '', email: '', password: ''};
- // submitted = false;
 
-
-  @Input() userObj = { id:'',first_name:'',last_name:'', username: '', email: '', password: '',is_student:false,is_entreprise:true }
+  @Input() userObj = { id:'',first_name:'',last_name:'', username: '', email: '', password: '' ,is_student:false,is_entreprise:false}
   constructor(
     private formBuilder: FormBuilder,
-    public authService: ApiService, 
+    public authService: AuthService, 
     private http: HttpClient,
     private router: Router
   ) { }
@@ -40,17 +40,17 @@ export class CompanyRegisterComponent implements OnInit {
   }
 
   addUser(data: any) {
-    this.url = '/entreprise/create/'
+    this.url = '/student/create/';
+    //this.userObj.is_student = true;
     this.authService.addUser(this.userObj,this.url).subscribe((response) => {
      console.log(response.email)
       this.router.navigate(['/login'])
     },
     (error) => {
-      this.formError = error;
+       this.formError = error;
     })
   }
-  
-  /* submit(): void {
+ /*  submit(): void {
     this.submitted = true;
     if(this.form.invalid){
       console.log('erroor');
@@ -67,8 +67,6 @@ export class CompanyRegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       );
-  }
-} */
-} 
- 
-
+  } 
+}*/
+}
