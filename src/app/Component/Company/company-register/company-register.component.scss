@@ -33,7 +33,7 @@ input{
 .container{
     width: 160%;
     position: absolute;
-    margin-top: 50px;
+    margin-top: 30px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -47,10 +47,11 @@ input{
     align-items: center;
     flex-direction: column;
     width: 55%;
-    margin-top: -5%;
+    margin-top: 10%;
 }
 .image{
     width: 50%;
+    margin-top: 10%;
 }
 .img{
     width: 100%;
