@@ -49,26 +49,6 @@ export class CompanyRegisterComponent implements OnInit {
       this.formError = error;
     })
   }
-  
-  /* submit(): void {
-    this.submitted = true;
-    if(this.form.invalid){
-      console.log('erroor');
-      return;
-    }
-    else {
-    this.http.post('http://localhost:8000/api/student/create/', this.form.getRawValue())
-      .subscribe(
-        (response)=>{
-          if(response['email'] == "user with this email already exists."){
-            console.log(response['email']);
-          }
-          console.log(response);
-          this.router.navigate(['/login']);
-        }
-      );
-  }
-} */
 } 
  
 

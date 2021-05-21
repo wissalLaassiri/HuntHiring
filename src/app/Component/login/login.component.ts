@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MustMatch } from '../../../_helpers/must-match.validator';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { AuthService } from '../../services/Authentification/auth.service';
 import { Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-company-register',
@@ -16,16 +16,36 @@ export class LoginComponent implements OnInit {
   type: string = "";
   form: any = { email: '', password: '' };
   is_company = false;
-  submitted = false;
+  closeModal: string;
+
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private modalService : NgbModal
   ) {}
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+    }
+  }
+
+  triggerModal(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
     }
   }
 

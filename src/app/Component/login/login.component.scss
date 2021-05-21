@@ -1,13 +1,8 @@
-*{
-    box-sizing: border-box;
+button{
+    border: none;
+    color: #427bff;
+    background-color: white;
 }
-body{
-    margin: 0;
-    padding: 0;
-    background:  #fff;
-    font-family: 'Montserrat', sans-serif;
-}
-
 input{
     outline: none;
     border: none;
@@ -19,7 +14,10 @@ input{
 .logo{
     width: 125px;
 }
-
+.icons{
+    width: 125px;
+    margin: 50px;
+}
 .heading h1{
     font-size: 2rem;
     font-weight: 400;

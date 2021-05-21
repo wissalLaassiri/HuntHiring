@@ -16,13 +16,22 @@ export class AuthInterceptor implements HttpInterceptor {
       let authReq = req;
       const token = this.token['token'];
       console.log("okey ",this.token['token']); 
-      if (token != null) {
+
+      if (this.isHeaderNeeded('api/company')&& token != null) {
         authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
       }
       return next.handle(authReq);
+    }
+    isHeaderNeeded(url: string) {
+      if (url === "api/company/me") { 
+          return false;
+      } else {
+          return true;
+      }
     }
   }
   
   export const authInterceptorProviders = [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ];
+

@@ -13,6 +13,8 @@ import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CompHomeComponent } from './Component/Company/comp-home/comp-home.component';
 import { CompHeaderComponent } from './Component/Company/comp-header/comp-header.component';
 import { authInterceptorProviders } from './services/Authentification/auth.interceptor';
+import { CompNewOffersComponent } from './Component/Company/comp-new-offers/comp-new-offers.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { authInterceptorProviders } from './services/Authentification/auth.inter
     CompanyRegisterComponent,
     StudentRegisterComponent,
     CompHomeComponent,
-    CompHeaderComponent
+    CompHeaderComponent,
+    CompNewOffersComponent
   ],
   
   imports: [
@@ -31,7 +34,8 @@ import { authInterceptorProviders } from './services/Authentification/auth.inter
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders
   ],
