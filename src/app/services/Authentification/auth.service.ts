@@ -6,9 +6,9 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { catchError, map, retry } from 'rxjs/operators';
-import { Observable, forkJoin , throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import{TokenStorageService} from './../token-storage.service';
+import { TokenStorageService } from './../token-storage.service';
 import { User } from '../../Models/user';
 
 @Injectable({
@@ -26,7 +26,11 @@ export class AuthService {
   currentUser = {};
   res = '';
 
-  constructor(private http: HttpClient,private token:TokenStorageService, public router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private token: TokenStorageService,
+    public router: Router
+  ) {}
 
   //Sign-In
   login(email: string, password: string): Observable<any> {
@@ -65,15 +69,14 @@ export class AuthService {
       );
   }
 
-  getRole(url:string): Observable<any> {
+  getRole(url: string): Observable<any> {
     let authToken = this.token.getUser();
-    authToken = 'Bearer '+authToken;
-    console.log('im in '+authToken);
+    authToken = 'Bearer ' + authToken;
+    //console.log('im in '+authToken);
     return this.http.get(this.endpoint + url, this.httpOptions).pipe(
       map((res) => {
-        const detail= JSON.stringify(res['body']['email']);
-        console.log('jjj ' + detail);
-        return res;
+        const detail = res['body'];
+        return detail;
       }),
       catchError(this.handleError)
     );

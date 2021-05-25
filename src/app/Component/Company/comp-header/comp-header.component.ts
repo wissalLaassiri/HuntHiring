@@ -22,7 +22,7 @@ export class CompHeaderComponent implements OnInit {
   
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-
+    console.log(this.tokenStorageService.type);
    
   }
 

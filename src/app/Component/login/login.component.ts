@@ -58,22 +58,23 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        //this.is_company = this.tokenStorage.getUser().is_entreprise;
         if (this.isLoggedIn) {
           this.authService.getRole('/company/me/').subscribe((res) => {
-             this.type= JSON.stringify(res);
+             this.type= JSON.stringify(res['type']);
+             this.tokenStorage.type=JSON.stringify(res['type']);
+             this.tokenStorage.user = JSON.stringify(res);
               console.log("types 2 "+ this.type);
               this.router.navigate(['/company/home']);
-           
          },
          (err)=>{
            if(err==="Not found."){
              console.log(err);
              this.authService.getRole('/student/me/').subscribe((res) => {
-              this.type= JSON.stringify(res['body']['type']);
-               console.log("types 2 "+ this.type);
+              this.type= JSON.stringify(res['type']);
+              this.tokenStorage.type=JSON.stringify(res['type']);
+              this.tokenStorage.user = JSON.stringify(res);
+               console.log("types 2 "+ this.tokenStorage.user);
                this.router.navigate(['/index']);
-             
             });
             }
          });

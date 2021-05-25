@@ -1,13 +1,12 @@
 <nav class="navbar navbar-fixed-top">
     <a routerLink=""><img src="../../../assets/img/logo.png" class="logo" alt=""></a>
-    <a routerLink="/login">
-        <button class="btn btn-hh" type="submit">Start Hunting</button>
-    </a>
+    <button class="btn btn-hh" *ngIf="!isLoggedIn" (click)="notSignIn()">Start Hunting</button>
+    <button class="btn btn-hh" *ngIf="isLoggedIn" (click)="onSignIn()">Start Hunting</button>
   </nav>
 
   
   <div class="card">
-    <img src="../../../assets/img/bg.jpg" class="card-img-top" />
+    <img src="../../../assets/img/vision2.jpg" class="card-img-top" />
     <div class="card-body">
         <div class="row">
             <div class="col-sm-6">

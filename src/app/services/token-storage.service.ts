@@ -10,6 +10,8 @@ const USER_KEY = 'auth-user';
 export class TokenStorageService {
   token="";
   isLogedIn = false;
+  type="";
+  user:any;
  
   constructor() { }
 
