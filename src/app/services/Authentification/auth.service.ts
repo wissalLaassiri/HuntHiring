@@ -69,18 +69,19 @@ export class AuthService {
       );
   }
 
-  getRole(url: string): Observable<any> {
+  getRole(): Observable<any> {
     let authToken = this.token.getUser();
     authToken = 'Bearer ' + authToken;
-    //console.log('im in '+authToken);
-    return this.http.get(this.endpoint + url, this.httpOptions).pipe(
+    return this.http.get(this.endpoint + '/me/', this.httpOptions).pipe(
       map((res) => {
         const detail = res['body'];
-        return detail;
+        this.token.type = JSON.stringify(detail['type']);
+       console.log("det  ",detail);
+       console.log("typee in auth  ",this.token.type);
+       return detail;
       }),
       catchError(this.handleError)
     );
-    // return (authToken !== null) ? true : false;
   }
 
   // Error

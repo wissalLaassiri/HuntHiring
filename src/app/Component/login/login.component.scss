@@ -11,9 +11,11 @@ input{
 .heading{
     width: 80%;
 }
-.logo{
+.logo {
     width: 125px;
-}
+    height: 107px;
+    background: white;
+  }
 .icons{
     width: 125px;
     margin: 50px;
@@ -31,7 +33,7 @@ input{
 .container{
     width: 160%;
     position: absolute;
-    margin-top: 50px;
+    margin-top: 60px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);

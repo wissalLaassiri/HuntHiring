@@ -17,7 +17,9 @@ export class HomeComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) {
+   
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();

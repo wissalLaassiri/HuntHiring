@@ -1,94 +1,132 @@
+
 <app-comp-header></app-comp-header>
 
-<div class="row-margin">
-    <div class="col-6">
-      <div class="form-group">
-        <div class="wrap">
-          <div class="f1">
-            <label for="">First Name</label>
-            <input [(ngModel)]="userObj.first_name" class="form-control" placeholder="FirstName" required>
-            <span class="focus-input"></span>
-            <div *ngIf="formError['first_name']" class="alert alert-warning">
-              <strong> {{formError['first_name'] | json}}</strong>
-            </div>
-          </div>
-          <div class="f2">
-            <label for="">Last Name</label>
-            <input [(ngModel)]="userObj.last_name" class="form-control" placeholder="LastName" required>
-            <span class="focus-input"></span>
-            <div *ngIf="formError['last_name']" class="alert alert-warning">
-              <strong> {{formError['last_name'] | json}}</strong>
-            </div>
-          </div>
-        </div>
-        <div class="wrap2">
-          <label for="">E-mail</label>
-          <input [(ngModel)]="userObj.email" type="email" class="form-control" placeholder="Email" required >
-          <span class="focus-input2"></span>
-          <div *ngIf="formError['email']" class="alert alert-warning">
-            <strong> {{formError['email'] | json}}</strong>
-          </div>
-        </div>
-        <div class="wrap">
-          <div class="f1">
-            <label for="">Username</label>
-            <input [(ngModel)]="userObj.username" class="form-control" placeholder="Username" required>
-            <span class="focus-input2"></span>
-            <div *ngIf="formError['username']" class="alert alert-warning">
-              <strong> {{formError['username'] | json}}</strong>
-            </div>
-          </div>
-          <div class="f2">
-            <label for="">City</label>
-          <input [(ngModel)]="userObj.city" class="form-control" placeholder="City" required>
-          <span class="focus-input2"></span>
-          <div *ngIf="formError['city']" class="alert alert-warning">
-            <strong> {{formError['city'] | json}}</strong>
-          </div>
-          </div>
-        </div>
-        <div class="wrap2">
-          <label for="">Password</label>
-          <input [(ngModel)]="userObj.password" type="password" class="form-control" placeholder="Password" required>
-          <span class="focus-input2"></span>
-          <div *ngIf="formError['password']" class="alert alert-warning">
-            <strong> {{formError['password'] | json}}</strong>
-          </div>
-        </div>
-        <div class="wrap2">
-          <label for="">Domain</label>
-          <input [(ngModel)]="userObj.domain" class="form-control" placeholder="Domain" required>
-          <span class="focus-input2"></span>
-         
-        </div>
-        <div class="wrap">
-          <div class="f1">
-            <label for="">Company Website</label>
-            <input [(ngModel)]="userObj.website_link" class="form-control" placeholder="website_link" required>
-            <span class="focus-input"></span>
-            <div *ngIf="formError['website_link']" class="alert alert-warning">
-              <strong> {{formError['website_link'] | json}}</strong>
-            </div>
-          </div>
-          <div class="f2">
-            <label for="">LinkedIn</label>
-            <input [(ngModel)]="userObj.linkedin_link" class="form-control" placeholder="linkedin_link" required>
-            <span class="focus-input"></span>
-            <div *ngIf="formError['linkedin_link']" class="alert alert-warning">
-              <strong> {{formError['linkedin_link'] | json}}</strong>
-            </div>
-          </div>
-        </div>
-        <button class="btn" (click)="addUser(userObj)">Register</button>
-      
+<div class="wrapper">
+  <form action="" id="wizard">
+  <!-- SECTION 1 -->
+      <h2></h2>
+      <section>
+          <div class="inner">
+  <div class="image-holder">
+    <img src="../../../../assets/img/vision2.jpg" alt="">
+  </div>
+  <div class="form-content" >
+    <div class="form-header">
+      <h3>Registration</h3>
+    </div>
+    <p>Please fill with your details</p>
+    <div class="form-row">
+      <div class="form-holder">
+        <input type="text" placeholder="First Name" class="form-control">
+      </div>
+      <div class="form-holder">
+        <input type="text" placeholder="Last Name" class="form-control">
       </div>
     </div>
-   <div class="col-3">
-    <div class="image">
-      <img src="../../assets/img/register comany.jpg" alt="">
+    <div class="form-row">
+      <div class="form-holder">
+        <input type="text" placeholder="Your Email" class="form-control">
+      </div>
+      <div class="form-holder">
+        <input type="text" placeholder="Phone Number" class="form-control">
+      </div>
     </div>
-   </div>
-      
-    
+    <div class="form-row">
+      <div class="form-holder">
+        <input type="text" placeholder="Age" class="form-control">
+      </div>
+      <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
+        <div class="checkbox-tick">
+          <label class="male">
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <span class="checkmark"></span>
+          </label>
+          <label class="female">
+            <input type="radio" name="gender" value="female"> Female<br>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="checkbox-circle">
+      <label>
+        <input type="checkbox" checked> Nor again is there anyone who loves or pursues or desires to obtaini.
+        <span class="checkmark"></span>
+      </label>
+    </div>
   </div>
-  
+</div>
+      </section>
+
+<!-- SECTION 2 -->
+      <h2></h2>
+      <section>
+          <div class="inner">
+  <div class="image-holder">
+    <img src="../../../../assets/img/vision2.jpg" alt="">
+  </div>
+  <div class="form-content">
+    <div class="form-header">
+      <h3>Registration</h3>
+    </div>
+    <p>Please fill with additional info</p>
+    <div class="form-row">
+      <div class="form-holder w-100">
+        <input type="text" placeholder="Address" class="form-control">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-holder">
+        <input type="text" placeholder="City" class="form-control">
+      </div>
+      <div class="form-holder">
+        <input type="text" placeholder="Zip Code" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="select">
+        <div class="form-holder">
+          <div class="select-control">Your country</div>
+          <i class="zmdi zmdi-caret-down"></i>
+        </div>
+        <ul class="dropdown">
+          <li rel="United States">United States</li>
+          <li rel="United Kingdom">United Kingdom</li>
+          <li rel="Viet Nam">Viet Nam</li>
+        </ul>
+      </div>
+      <div class="form-holder"></div>
+    </div>
+  </div>
+</div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <h2></h2>
+      <section>
+          <div class="inner">
+  <div class="image-holder">
+    <img src="../../../../assets/img/vision2.jpg" alt="">
+  </div>
+  <div class="form-content">
+    <div class="form-header">
+      <h3>Registration</h3>
+    </div>
+    <p>Send an optional message</p>
+    <div class="form-row">
+      <div class="form-holder w-100">
+        <textarea name="" id="" placeholder="Your messagere here!" class="form-control" style="height: 99px;"></textarea>
+      </div>
+    </div>
+    <div class="checkbox-circle mt-24">
+      <label>
+        <input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+</div>
+      </section>
+  </form>
+</div>

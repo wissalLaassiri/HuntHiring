@@ -13,39 +13,51 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  type: string = "";
+  type: string = '';
   form: any = { email: '', password: '' };
-  is_company = false;
   closeModal: string;
 
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router,
-    private modalService : NgbModal
-  ) {}
+    private modalService: NgbModal
+  ) {
+    if (!this.tokenStorage.getToken()) {
+      console.log('not logged in');
+    } else {
+      console.log('logged in');
+    }
+  }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.type = this.tokenStorage.type;
+      this.redirectUser();
     }
   }
 
   triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (res) => {
+          this.closeModal = `Closed with: ${res}`;
+        },
+        (res) => {
+          this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+        }
+      );
   }
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
@@ -54,31 +66,17 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (data) => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.access);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         if (this.isLoggedIn) {
-          this.authService.getRole('/company/me/').subscribe((res) => {
-             this.type= JSON.stringify(res['type']);
-             this.tokenStorage.type=JSON.stringify(res['type']);
-             this.tokenStorage.user = JSON.stringify(res);
-              console.log("types 2 "+ this.type);
-              this.router.navigate(['/company/home']);
-         },
-         (err)=>{
-           if(err==="Not found."){
-             console.log(err);
-             this.authService.getRole('/student/me/').subscribe((res) => {
-              this.type= JSON.stringify(res['type']);
-              this.tokenStorage.type=JSON.stringify(res['type']);
-              this.tokenStorage.user = JSON.stringify(res);
-               console.log("types 2 "+ this.tokenStorage.user);
-               this.router.navigate(['/index']);
-            });
-            }
-         });
-         }
+          this.authService.getRole().subscribe((res) => {
+            this.type = JSON.stringify(res['type']);
+            console.log('on submit login ', this.tokenStorage.type);
+            this.redirectUser();
+          });
+        }
       },
       (err) => {
         this.errorMessage = err;
@@ -87,8 +85,15 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
-  reloadPage(): void {
-    window.location.reload();
+  redirectUser() {
+    if (this.tokenStorage.type === '"STUDENT"') {
+      console.log('============== log im stuud');
+      this.router.navigate(['/index']);
+    } else {
+      if (this.tokenStorage.type === '"COMPANY"') {
+        console.log('======= loog Compaaaa');
+        this.router.navigate(['/company/home']);
+      } 
+    }
   }
 }

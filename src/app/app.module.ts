@@ -15,6 +15,7 @@ import { CompHeaderComponent } from './Component/Company/comp-header/comp-header
 import { authInterceptorProviders } from './services/Authentification/auth.interceptor';
 import { CompNewOffersComponent } from './Component/Company/comp-new-offers/comp-new-offers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './Component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     StudentRegisterComponent,
     CompHomeComponent,
     CompHeaderComponent,
-    CompNewOffersComponent
+    CompNewOffersComponent,
+    HeaderComponent
   ],
   
   imports: [

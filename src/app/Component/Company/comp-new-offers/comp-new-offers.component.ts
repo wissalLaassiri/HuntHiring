@@ -11,24 +11,10 @@ import { AuthService } from 'src/app/services/Authentification/auth.service';
   styleUrls: ['./comp-new-offers.component.scss']
 })
 export class CompNewOffersComponent implements OnInit {
-  form: FormGroup;
-  url = '';
-  formError = {first_name:'',last_name:'', username: '', email: '', password: '',website_link: '',linkedin_link:'',city:'',domain:''};
-  @Input() userObj = { id:'',first_name:'',last_name:'', username: '', email: '', password: '',website_link: '',linkedin_link:'',city:'',domain:''}
 
-  constructor(private formBuilder: FormBuilder,
-    public authService: AuthService, 
-    private http: HttpClient,
-    private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  get f(){
-    return this.form.controls;
-  }
-
-  addUser(data: any) {
-    
-  }
 }

@@ -15,12 +15,13 @@ export class TokenStorageService {
  
   constructor() { }
 
-  public saveToken(token: string): void {
+  public saveToken(token_access: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.setItem(TOKEN_KEY, token_access);
   }
 
   public getToken(): string | null {
+    this.isLogedIn=true;
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
@@ -30,13 +31,13 @@ export class TokenStorageService {
     if (user) {
      this.token = JSON.parse(user);
      this.token=this.token['body']['access'];
-     console.log(this.token);
+     console.log("still ",this.token);
       return this.token;
     }
   }
 
   public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
+    //window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
