@@ -1,0 +1,108 @@
+
+    <html>
+      <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+
+    <header>
+    <nav class="navbar navbar-expand-sm navbar-light " [class.header_change] = "header_variable">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/hunthiring.png" width="30" height="30" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container">
+        <ul class="navbar-nav m-auto">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Search Offers <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hunted Offers</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#">View profil</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+    
+    <div class="container">
+
+
+   
+   <div class="header">
+    <form [formGroup]="searchForm">
+      <h1>Start Hunting</h1>
+      <div class="form-box">
+        <label>
+          <select [(ngModel)]="typeId" >
+            <option *ngFor="let type of types" value="{{type.id}}" formControlName="types">{{ type.name}}</option>
+          </select>
+
+          <select [(ngModel)]="fieldId">
+            <option  *ngFor="let field of fields" value="{{field.id}}" formControlName="fields">{{ field.name}}</option>
+          </select>
+          <input type="text" class="search-fields field"  formControlName="inputs" placeholder="Search Offers..." />
+          
+          <select [(ngModel)]="cityId">
+            <option  *ngFor="let city of cities" value="{{city.id}}" formControlName="cities">{{ city.name}}</option>
+          </select>
+          
+          <button class="search-btn" type="button" (click)="search(searchForm.value)" >Search</button>
+        </label> 
+      </div>
+      
+            
+
+  </form>
+</div>
+</div>
+</header>
+
+<section>
+
+  <div *ngIf="loading">
+    <p class="search-message">Searching</p>
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+    <div *ngIf="searchResults">
+      <div class="results" >
+        <div class="repo" *ngFor="let result of paginationElements | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div>
+                <img loading="lazy" [attr.src]="result.owner.avatar_url"
+                    width="200"
+                    height="auto"
+                    alt="avatar"
+                />
+                <h2><a href="{{result.clone_url}}" target="_blank">{{result.full_name}}</a></h2>
+                <p><strong>{{result.owner.login}}</strong></p>
+                <p><em>Forks</em>: {{result.forks_count}}</p>
+                <p><em>Issues</em>: {{result.open_issues_count}}</p>
+            </div>  
+        </div>
+    </div>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+   
+    <div *ngIf="errorMessage" class="errorMessage">
+        <h2>Error</h2>
+        <p class="error">{{errorMessage}}</p>
+    </div>
+
+
+</section>
+</html>
