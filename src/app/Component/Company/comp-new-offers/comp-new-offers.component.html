@@ -1,132 +1,125 @@
-
 <app-comp-header></app-comp-header>
-
-<div class="wrapper">
-  <form action="" id="wizard">
-  <!-- SECTION 1 -->
-      <h2></h2>
-      <section>
-          <div class="inner">
-  <div class="image-holder">
-    <img src="../../../../assets/img/vision2.jpg" alt="">
-  </div>
-  <div class="form-content" >
-    <div class="form-header">
-      <h3>Registration</h3>
+<div class="page-content">
+  <div class="form-v7-content">
+    <div class="form-left">
+      <img src="../../../../assets/img/vision.jpg" alt="form" />
+      <p class="text-1">New Offer</p>
+      <p class="text-2">Privaci policy & Term of service</p>
     </div>
-    <p>Please fill with your details</p>
-    <div class="form-row">
-      <div class="form-holder">
-        <input type="text" placeholder="First Name" class="form-control">
+    <form  [formGroup]="form" class="form-detail" action="#" method="post" id="myform">
+      <div class="form-row">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="offre_title"
+          id="offre_title"
+          class="input-text"
+        />
       </div>
-      <div class="form-holder">
-        <input type="text" placeholder="Last Name" class="form-control">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-holder">
-        <input type="text" placeholder="Your Email" class="form-control">
-      </div>
-      <div class="form-holder">
-        <input type="text" placeholder="Phone Number" class="form-control">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-holder">
-        <input type="text" placeholder="Age" class="form-control">
-      </div>
-      <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
-        <div class="checkbox-tick">
-          <label class="male">
-            <input type="radio" name="gender" value="male" checked> Male<br>
-            <span class="checkmark"></span>
-          </label>
-          <label class="female">
-            <input type="radio" name="gender" value="female"> Female<br>
-            <span class="checkmark"></span>
-          </label>
+      <div class="form-group">
+        <label for="offer_type">Type</label>
+        <select
+          formControlName="offer_type"
+          class="form-control"
+          (change)="changeOfferType($event)"
+        >
+          <option disabled>Select Website</option>
+          <option *ngFor="let t of type">{{ t }}</option>
+        </select>
+        <div
+          *ngIf="f.offer_type.touched && f.offer_type.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.offer_type.errors.required">Name is required.</div>
         </div>
       </div>
-    </div>
-    <div class="checkbox-circle">
-      <label>
-        <input type="checkbox" checked> Nor again is there anyone who loves or pursues or desires to obtaini.
-        <span class="checkmark"></span>
-      </label>
-    </div>
-  </div>
-</div>
-      </section>
-
-<!-- SECTION 2 -->
-      <h2></h2>
-      <section>
-          <div class="inner">
-  <div class="image-holder">
-    <img src="../../../../assets/img/vision2.jpg" alt="">
-  </div>
-  <div class="form-content">
-    <div class="form-header">
-      <h3>Registration</h3>
-    </div>
-    <p>Please fill with additional info</p>
-    <div class="form-row">
-      <div class="form-holder w-100">
-        <input type="text" placeholder="Address" class="form-control">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-holder">
-        <input type="text" placeholder="City" class="form-control">
-      </div>
-      <div class="form-holder">
-        <input type="text" placeholder="Zip Code" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="select">
-        <div class="form-holder">
-          <div class="select-control">Your country</div>
-          <i class="zmdi zmdi-caret-down"></i>
+      <div class="form-row">
+        <div class="form-row">
+          <label for="title">Skills</label>
+          <button
+            type="button"
+            class="btn btn-outline-info btngroup"
+            (click)="triggerModal(modalData)"
+          >
+            Add
+          </button>
         </div>
-        <ul class="dropdown">
-          <li rel="United States">United States</li>
-          <li rel="United Kingdom">United Kingdom</li>
-          <li rel="Viet Nam">Viet Nam</li>
-        </ul>
       </div>
-      <div class="form-holder"></div>
-    </div>
-  </div>
-</div>
-      </section>
+      <div class="form-row">
+        <label for="title">Company's name</label>
+        <input
+          type="text"
+          name="entreprise_name"
+          id="entreprise_name"
+          class="input-text"
+        />
+      </div>
+      <div class="form-row">
+        <label for="title">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          class="input-text"
+        />
+      </div>
+      <div class="form-row">
+        <label for="title">Link</label>
+        <input type="text" name="link" id="link" class="input-text" />
+      </div>
+      <div class="form-row">
+        <label for="title">City</label>
+        <input type="text" name="city" id="city" class="input-text" />
+      </div>
 
-      <!-- SECTION 3 -->
-      <h2></h2>
-      <section>
-          <div class="inner">
-  <div class="image-holder">
-    <img src="../../../../assets/img/vision2.jpg" alt="">
-  </div>
-  <div class="form-content">
-    <div class="form-header">
-      <h3>Registration</h3>
-    </div>
-    <p>Send an optional message</p>
-    <div class="form-row">
-      <div class="form-holder w-100">
-        <textarea name="" id="" placeholder="Your messagere here!" class="form-control" style="height: 99px;"></textarea>
+      <div class="form-row-last">
+        <input
+          type="submit"
+          name="register"
+          class="register"
+          value="Register"
+        />
+        <p>Or<a href="#">Save</a></p>
       </div>
-    </div>
-    <div class="checkbox-circle mt-24">
-      <label>
-        <input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
-        <span class="checkmark"></span>
-      </label>
-    </div>
+    </form>
+
+    <ng-template #modalData let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New Skill</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+          <div class="wrap">
+            <div class="f1">
+              <label for="">Name</label>
+              <input
+                [(ngModel)]="skill.name"
+                class="form-control"
+                placeholder="name"
+                required
+              />
+              <span class="focus-input"></span>
+            </div>
+            <button class="btn btn-success" (click)="onAddSkills(skill)">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="modal.close('Save click')">
+          Close
+        </button>
+      </div>
+    </ng-template>
   </div>
-</div>
-      </section>
-  </form>
 </div>

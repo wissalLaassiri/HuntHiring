@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       if (this.tokenStorage.type === '"COMPANY"') {
         console.log('======= loog Compaaaa');
         this.router.navigate(['/company/home']);
-      } 
+      }
     }
   }
 }
