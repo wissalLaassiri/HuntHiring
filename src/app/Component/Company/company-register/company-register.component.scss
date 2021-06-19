@@ -25,17 +25,21 @@ input{
     font-weight: 400;
     color: #5D2A42 ;
 }
+.heading h3{
+    color: #5D2A42;
+    text-align: center;
+}
 
 .container{
-    width: 80%;
+    width: 160%;
     position: absolute;
+    margin-top: 45px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    height: 90vh;
+    height: 80vh;
     background-color: #ffffff;
     display: flex;
-    /*box-shadow: 5px 10px 38px rgba(0,0,0,0.2);*/
 }
 .form{
     display: flex;
@@ -43,9 +47,11 @@ input{
     align-items: center;
     flex-direction: column;
     width: 55%;
+    margin-top: 10%;
 }
 .image{
     width: 50%;
+    margin-top: 10%;
 }
 .img{
     width: 100%;
@@ -57,6 +63,11 @@ input{
     width: 80%;
     position: relative;
     border-bottom: 2px solid #ecb3ce ;
+    margin-bottom: 13px;
+}
+.wrapErr{
+    width: 80%;
+    position: relative;
     margin-bottom: 13px;
 }
 .wrap{
@@ -193,3 +204,11 @@ input[type="number"]{
         transform: translate(0,0);
     }
 }
+
+.alert-warning {
+    color: #5d3164;
+    background-color: #ede8ee;
+    border-color: #ede8ee;
+    width: 300px;
+}
+  

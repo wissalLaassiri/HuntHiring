@@ -32,11 +32,21 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/glightbox/dist/css/glightbox.min.css",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/jquery.steps/dist/jquery-steps.js",
+              "node_modules/smartwizard/dist/js/jquery.smartWizard.js",
+              "node_modules/glightbox/dist/js/glightbox.min.js",
+              "node_modules/swiper/swiper-bundle.min.js",
+              "src/assets/offersJs/offers.js"
+
             ]
           },
           "configurations": {
@@ -72,7 +82,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HuntHiring:build"
+            "browserTarget": "HuntHiring:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

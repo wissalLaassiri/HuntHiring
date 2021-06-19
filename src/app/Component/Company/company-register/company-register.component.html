@@ -1,0 +1,92 @@
+<app-header></app-header>
+  <div class="container">
+    <div class="form ">
+      <div class="heading">
+        <h3>Sign Up As Company</h3>
+        <br />
+      </div>
+      <div class="wrap">
+        <div class="f1">
+          <label for="">First Name</label>
+          <input [(ngModel)]="userObj.first_name" class="form-control" placeholder="FirstName" required>
+          <span class="focus-input"></span>
+          <div *ngIf="formError['first_name']" class="alert alert-warning">
+            <strong> {{formError['first_name'] | json}}</strong>
+          </div>
+        </div>
+        <div class="f2">
+          <label for="">Last Name</label>
+          <input [(ngModel)]="userObj.last_name" class="form-control" placeholder="LastName" required>
+          <span class="focus-input"></span>
+          <div *ngIf="formError['last_name']" class="alert alert-warning">
+            <strong> {{formError['last_name'] | json}}</strong>
+          </div>
+        </div>
+      </div>
+      <div class="wrap2">
+        <label for="">E-mail</label>
+        <input [(ngModel)]="userObj.email" type="email" class="form-control" placeholder="Email" required >
+        <span class="focus-input2"></span>
+        <div *ngIf="formError['email']" class="alert alert-warning">
+          <strong> {{formError['email'] | json}}</strong>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="f1">
+          <label for="">Username</label>
+          <input [(ngModel)]="userObj.username" class="form-control" placeholder="Username" required>
+          <span class="focus-input2"></span>
+          <div *ngIf="formError['username']" class="alert alert-warning">
+            <strong> {{formError['username'] | json}}</strong>
+          </div>
+        </div>
+        <div class="f2">
+          <label for="">City</label>
+        <input [(ngModel)]="userObj.city" class="form-control" placeholder="City" required>
+        <span class="focus-input2"></span>
+        <div *ngIf="formError['city']" class="alert alert-warning">
+          <strong> {{formError['city'] | json}}</strong>
+        </div>
+        </div>
+      </div>
+      <div class="wrap2">
+        <label for="">Password</label>
+        <input [(ngModel)]="userObj.password" type="password" class="form-control" placeholder="Password" required>
+        <span class="focus-input2"></span>
+        <div *ngIf="formError['password']" class="alert alert-warning">
+          <strong> {{formError['password'] | json}}</strong>
+        </div>
+      </div>
+      <div class="wrap2">
+        <label for="">Domain</label>
+        <input [(ngModel)]="userObj.domain" class="form-control" placeholder="Domain" required>
+        <span class="focus-input2"></span>
+       
+      </div>
+      <div class="wrap">
+        <div class="f1">
+          <label for="">Company Website</label>
+          <input [(ngModel)]="userObj.website_link" class="form-control" placeholder="website_link" required>
+          <span class="focus-input"></span>
+          <div *ngIf="formError['website_link']" class="alert alert-warning">
+            <strong> {{formError['website_link'] | json}}</strong>
+          </div>
+        </div>
+        <div class="f2">
+          <label for="">LinkedIn</label>
+          <input [(ngModel)]="userObj.linkedin_link" class="form-control" placeholder="linkedin_link" required>
+          <span class="focus-input"></span>
+          <div *ngIf="formError['linkedin_link']" class="alert alert-warning">
+            <strong> {{formError['linkedin_link'] | json}}</strong>
+          </div>
+        </div>
+      </div>
+      <button class="btn" (click)="addUser(userObj)">Register</button>
+    
+    </div>
+      <div class="image">
+        <img src="../../assets/img/register comany.jpg" alt="">
+      </div>
+    
+  </div>
+  

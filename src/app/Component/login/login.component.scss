@@ -1,42 +1,43 @@
-*{
-    box-sizing: border-box;
+button{
+    border: none;
+    color: #427bff;
+    background-color: white;
 }
-body{
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to left, #5D2A42 40%, #5D2A42 20%, #ffff 40%, #ffff 80%) fixed;
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 24%;
-}
-
 input{
     outline: none;
     border: none;
 }
-h3{
-    color: #5D2A42;
-    text-align: center;
-}
+
 .heading{
     width: 80%;
 }
-.logo{
-    width: 100px;
+.logo {
+    width: 125px;
+    height: 107px;
+    background: white;
+  }
+.icons{
+    width: 125px;
+    margin: 50px;
 }
-
 .heading h1{
     font-size: 2rem;
     font-weight: 400;
     color: #5D2A42 ;
 }
+.heading h3{
+    color: #5D2A42;
+    text-align: center;
+}
 
 .container{
     width: 160%;
     position: absolute;
+    margin-top: 60px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    height: 90vh;
+    height: 80vh;
     background-color: #ffffff;
     display: flex;
 }
@@ -49,20 +50,23 @@ h3{
     margin-top: -5%;
 }
 .image{
-    width: 55%;
-    margin-left: -6.5%;
-    margin-top: 11%;
+    width: 50%;
 }
 .img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .wrap2{
-    width: 70%;
+    width: 100%;
     position: relative;
     border-bottom: 2px solid #ecb3ce ;
+    margin-bottom: 13px;
+}
+.wrapErr{
+    width: 80%;
+    position: relative;
     margin-bottom: 13px;
 }
 .wrap{
@@ -83,7 +87,7 @@ h3{
 }
 
 label{
-    font-size: 12px;
+    font-size: 18px;
     color: #5D2A42;
     line-height: 1.5;
     text-transform: uppercase;
@@ -109,7 +113,7 @@ input{
 }
 .btn{
     margin-top: 20px;
-    width: 120px;
+    width: 200px;
     height: 50px;
     border-radius: 40px;
     outline: none;
@@ -118,7 +122,7 @@ input{
     border: none;
     background: #5D2A42;
     color: white;
-    box-shadow: 8px 10px 30px rgba(0,0,0,0.2);
+    /*box-shadow: 8px 10px 30px rgba(0,0,0,0.2);*/
     transition: 0.4s;
 }
 
@@ -194,12 +198,30 @@ input[type="number"]{
 @media(max-width:768px){
     .container{
         width: 100%;
-        height: 100vh !important;
+        height: 81vh !important;
         position: static;
         transform: translate(0,0);
+        margin-top: 100px;
+        font-size: small;
+    }
+    .h3 h3{
+        font-size: small;
+    }
+    .logo{
+        width: 100px;
+    }
+    .heading{
+        height: 5%;
+    }
+    .target{
+        display: none;
     }
 }
 
-a{
-    color: #d18aab;
+.alert-warning {
+    color: #5d3164;
+    background-color: #ede8ee;
+    border-color: #ede8ee;
+    width: 300px;
 }
+  
