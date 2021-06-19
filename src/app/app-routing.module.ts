@@ -42,10 +42,11 @@ const routes: Routes = [
     component: ProfilStudentComponent
   },
   {
-    path: 'update',
+    path: 'updateProfil',
     component: UpdateStudentProfilComponent
-    
-=======
+  },{
+
+  
     path: 'student',
     component: StudentRegisterComponent
   },

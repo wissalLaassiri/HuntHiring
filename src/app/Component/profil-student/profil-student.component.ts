@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profil-student',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
+  closeModal: string;
 
   ngOnInit(): void {
+  }
+
+  showModal(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (res) => {
+          this.closeModal = `Closed with: ${res}`;
+        },
+        (res) => {
+          this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
