@@ -22,7 +22,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CompEditOfferComponent } from './Component/Company/comp-edit-offer/comp-edit-offer.component';
-import { StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
 import { StudHeaderComponent } from './Component/Student/stud-header/stud-header.component';
 
 @NgModule({
@@ -38,10 +37,9 @@ import { StudHeaderComponent } from './Component/Student/stud-header/stud-header
     CompNewOffersComponent,
     HeaderComponent,
     CompEditOfferComponent,
-    StudHomeComponent,
     StudHeaderComponent
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +48,7 @@ import { StudHeaderComponent } from './Component/Student/stud-header/stud-header
     HttpClientModule,
     NgbModule,
     MatFormFieldModule,
-    MatInputModule    
+    MatInputModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [authInterceptorProviders
