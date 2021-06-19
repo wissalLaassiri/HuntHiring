@@ -21,6 +21,9 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CompEditOfferComponent } from './Component/Company/comp-edit-offer/comp-edit-offer.component';
+import { StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
+import { StudHeaderComponent } from './Component/Student/stud-header/stud-header.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CompHomeComponent,
     CompHeaderComponent,
     CompNewOffersComponent,
-    HeaderComponent
+    HeaderComponent,
+    CompEditOfferComponent,
+    StudHomeComponent,
+    StudHeaderComponent
   ],
   
   imports: [

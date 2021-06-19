@@ -7,6 +7,8 @@ import {StudentRegisterComponent} from './Component/Student/student-register/stu
 import { CompanyRegisterComponent } from './Component/Company/company-register/company-register.component';
 import {CompHomeComponent} from './Component/Company/comp-home/comp-home.component';
 import { CompNewOffersComponent } from './Component/Company/comp-new-offers/comp-new-offers.component';
+import {CompEditOfferComponent} from './Component/Company/comp-edit-offer/comp-edit-offer.component';
+import {StudHomeComponent} from './Component/Student/stud-home/stud-home.component';
 const routes: Routes = [
   {
     path: '',
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'company/addOffer',
     component:CompNewOffersComponent
+  },
+  {
+    path: 'company/editOffer/:id',
+    component:CompEditOfferComponent
+  },
+  {
+    path: 'student/home',
+    component:StudHomeComponent
   }
 ];
 @NgModule({
