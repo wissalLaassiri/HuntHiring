@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
   redirectUser() {
     if (this.tokenStorage.type === '"STUDENT"') {
       console.log('============== log im stuud');
-      this.router.navigate(['/index']);
+      this.router.navigate(['/student/profile']);
     } else {
       if (this.tokenStorage.type === '"COMPANY"') {
         console.log('======= loog Compaaaa');

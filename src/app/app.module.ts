@@ -23,6 +23,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CompEditOfferComponent } from './Component/Company/comp-edit-offer/comp-edit-offer.component';
 import { StudHeaderComponent } from './Component/Student/stud-header/stud-header.component';
+import { StudProfileComponent } from './Component/Student/stud-profile/stud-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { StudHeaderComponent } from './Component/Student/stud-header/stud-header
     CompNewOffersComponent,
     HeaderComponent,
     CompEditOfferComponent,
-    StudHeaderComponent
+    StudHeaderComponent,
+    StudProfileComponent
   ],
 
   imports: [
