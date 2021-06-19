@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
 export class SearchOffersService{
     constructor(private httpClient: HttpClient){}
 
-    public baseUrl = "https://api.github.com/search/repositories"; //api link
+    public baseUrl = ""; //api link
     public searchResults: any;
 
     //http call api
