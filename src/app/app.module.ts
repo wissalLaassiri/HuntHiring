@@ -14,6 +14,7 @@ import { CompanyRegisterComponent } from './Component/company-register/company-r
 import { StudentRegisterComponent } from './Component/student-register/student-register.component';
 import { SearchOffersComponent } from './Component/search-offers/search-offers.component';
 import { FilterPipe } from './filter.pipe';
+import { UpdateStudentProfilComponent } from './Component/update-student-profil/update-student-profil.component';
 
 
 
@@ -26,6 +27,7 @@ import { FilterPipe } from './filter.pipe';
     CompanyRegisterComponent,
     StudentRegisterComponent,
     FilterPipe,
+    UpdateStudentProfilComponent,
   ],
   
   imports: [

@@ -6,6 +6,8 @@ import { HomeComponent } from './Component/home/home.component';
 import { StudentRegisterComponent } from './Component/student-register/student-register.component';
 import { CompanyRegisterComponent } from './Component/company-register/company-register.component';
 import { SearchOffersComponent } from './Component/search-offers/search-offers.component';
+import { ProfilStudentComponent } from './Component/profil-student/profil-student.component';
+import { UpdateStudentProfilComponent } from './Component/update-student-profil/update-student-profil.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,15 @@ const routes: Routes = [
     path: 'SearchOffers',
     loadChildren: () => import("./Component/search-offers/searchOffers.module").then(m => m.SearchOffersModule),
     component: SearchOffersComponent
+  },
+  {
+    path: 'Profil',
+    component: ProfilStudentComponent
+  },
+  {
+    path: 'update',
+    component: UpdateStudentProfilComponent
+    
   }
 ];
 @NgModule({
