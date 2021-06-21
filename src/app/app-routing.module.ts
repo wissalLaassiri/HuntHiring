@@ -9,7 +9,8 @@ import {CompHomeComponent} from './Component/Company/comp-home/comp-home.compone
 import { CompNewOffersComponent } from './Component/Company/comp-new-offers/comp-new-offers.component';
 import {CompEditOfferComponent} from './Component/Company/comp-edit-offer/comp-edit-offer.component';
 import {StudProfileComponent } from './Component/Student/stud-profile/stud-profile.component';
-
+import {StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
+import {StudOrganizeComponent} from './Component/Student/stud-organize/stud-organize.component';
 const routes: Routes = [
   {
     path: '',
@@ -48,6 +49,14 @@ const routes: Routes = [
   {
     path: 'student/profile',
     component:StudProfileComponent
+  },
+  {
+    path: 'student/home',
+    component:StudHomeComponent
+  },
+  {
+    path: 'student/organize',
+    component: StudOrganizeComponent
   }
 ];
 @NgModule({

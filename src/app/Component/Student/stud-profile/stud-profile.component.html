@@ -1,11 +1,11 @@
-<app-header></app-header>
+<app-stud-header></app-stud-header>
 
 <div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
         <div class="card">
-          <div class="card-body">
+          <div *ngIf="user" class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
               <img
                 src="data:image/png;base64,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"
@@ -14,91 +14,31 @@
                 width="150"
               />
               <div class="mt-3">
-                <h4>Nom & Prenom</h4>
-                <p class="text-secondary mb-1">Département</p>
-                <p class="text-muted font-size-sm">Filiére</p>
-                <p class="text-muted font-size-sm">Ville</p>
+                <h4>{{ user.username }}</h4>
+                <p class="text-secondary mb-1">{{ user.type }}</p>
+                <!-- <p class="text-muted font-size-sm">Filiére</p>
+                <p class="text-muted font-size-sm">Ville</p> =-->
               </div>
             </div>
           </div>
         </div>
         <div class="card mt-3">
-          <ul class="list-group list-group-flush">
-            <li
-              class="
-                list-group-item
-                d-flex
-                justify-content-between
-                align-items-center
-                flex-wrap
-              "
-            >
-              <h6 class="mb-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-globe mr-2 icon-inline"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                  ></path></svg
-                >LinkedIn
-              </h6>
-              <span class="text-secondary">https://link</span>
-            </li>
-            <li
-              class="
-                list-group-item
-                d-flex
-                justify-content-between
-                align-items-center
-                flex-wrap
-              "
-            >
-              <h6 class="mb-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-github mr-2 icon-inline"
-                >
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                  ></path></svg
-                >Github
-              </h6>
-              <span class="text-secondary">https://link</span>
-            </li>
-          </ul>
-
-          <div class="col-sm-12">
-            <a
-              class="btn btn-info"
-              target="__blank"
-              href="#"
-              style="border-color: #5d2a42; background-color: #5d2a42"
-              >Edit</a
-            >
+          <h6 class="d-flex align-items-center mb-3">
+            <i class="material-icons mr-2" style="color: #d18aab">Education</i>
+          </h6>
+          <div class="progress mb-3" style="height: 5px">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: 100%; background-color: #5d2a42"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
-        </div>
-        <div class="card mt-3">
           <ul class="list-group list-group-flush">
             <li
+              *ngFor="let e of education"
               class="
                 list-group-item
                 d-flex
@@ -107,34 +47,40 @@
                 flex-wrap
               "
             >
-              <h6 class="mb-0" style="color: #5d2a42">2020 -2021</h6>
-              <span class="">intitulet de formation</span>
-              <div class="col-sm-9 text-secondary">Ecole</div>
-              <div class="col-sm-9 text-secondary">Ville</div>
-            </li>
-            <li
-              class="
-                list-group-item
-                d-flex
-                justify-content-between
-                align-items-center
-                flex-wrap
-              "
-            >
-              <h6 class="mb-0" style="color: #5d2a42">2019-2020</h6>
-              <span class="">intitulet de formation</span>
-              <div class="col-sm-9 text-secondary">Ecole</div>
-              <div class="col-sm-9 text-secondary">Ville</div>
+              <h6 class="mb-0" style="color: #5d2a42">
+                {{ e.startDate | date: "yyyy" }}-{{ e.endDate | date: "yyyy" }}
+              </h6>
+              <span class="">{{ e.title }}</span>
+              <div class="col-sm-9 text-secondary">{{ e.school }}</div>
+              <div class="col-sm-9 text-secondary">{{ e.city }}</div>
             </li>
             <hr />
 
             <div class="col-sm-12">
               <a
+                (click)="showModal(modalFormation)"
+                data-toggle="modal"
+                data-target="#exampleModalScrollable"
+                class="btn btn-info"
+                target="__blank"
+                href="#"
+                style="
+                  border-color: #5d2a42;
+                  background-color: #5d2a42;
+                  margin: 10px;
+                "
+                >Edit</a
+              >
+
+              <a
+                (click)="showModal(modalnewFormation)"
+                data-toggle="modal"
+                data-target="#exampleModalScrollable"
                 class="btn btn-info"
                 target="__blank"
                 href="#"
                 style="border-color: #5d2a42; background-color: #5d2a42"
-                >Edit</a
+                >Ajouter</a
               >
             </div>
           </ul>
@@ -159,23 +105,17 @@
             </div>
             <div>
               <div>
-                <h6 class="mb-0 col-sm">Titre</h6>
+                <h6 class="mb-0 col-sm">Devops</h6>
               </div>
-              <div class="col-sm-9 text-secondary">Comp1</div>
-              <div class="col-sm-9 text-secondary">Comp2</div>
             </div>
             <hr />
-            <div>
-              <div>
-                <h6 class="mb-0 col-sm">Titre</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">Comp1</div>
-              <div class="col-sm-9 text-secondary">Comp2</div>
-            </div>
             <hr />
             <div class="row">
               <div class="col-sm-12">
                 <a
+                  (click)="showModal(modalCompetence)"
+                  data-toggle="modal"
+                  data-target="#exampleModalScrollable"
                   class="btn btn-info"
                   target="__blank"
                   href="#"
@@ -186,109 +126,102 @@
             </div>
           </div>
         </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <h6 class="d-flex align-items-center mb-3">
-              <i class="material-icons mr-2" style="color: #d18aab"
-                >Certification</i
-              >
-            </h6>
-            <div class="progress mb-3" style="height: 5px">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 100%; background-color: #5d2a42"
-                aria-valuenow="80"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
+<div class="card mt-3">
+          <h6 class="d-flex align-items-center mb-3">
+            <i class="material-icons mr-2" style="color: #d18aab">Certification</i>
+          </h6>
+          <div class="progress mb-3" style="height: 5px">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: 100%; background-color: #5d2a42"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+
+          <ul *ngFor="let c of certif" class="list-group list-group-flush">
             <div>
-              <div>
                 <h6 class="mb-0 col-sm" style="color: #66505a">
-                  Titre certif1
+                  {{c.title}}
                 </h6>
               </div>
-              <span class="">Organisation</span>
-              <div class="col-sm-9 text-secondary">org</div>
-              <span class="">Date d'optention</span>
-              <div class="col-sm-9 text-secondary">Date</div>
-              <span class="">Expire</span>
-              <div class="col-sm-9 text-secondary">Date</div>
-              <span class="">Credential Id</span>
-              <div class="col-sm-9 text-secondary">Credential Id</div>
-            </div>
+            <li
+              class="
+                list-group-item
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+              "
+            >
+              <h6 class="mb-0" style="color: #5d2a42">
+                Organisation
+              </h6>
+              <span class="">{{ c.organization }}</span>
+              <div class="col-sm-9 text-secondary">{{ c.issueDate |date}}</div>
+              <div class="col-sm-9 text-secondary">{{ c.credential_id }}</div>
+            </li>
             <hr />
-            <div>
-              <div>
-                <h6 class="mb-0 col-sm" style="color: #66505a">
-                  Titre certif2
-                </h6>
-              </div>
-              <span class="">Organisation</span>
-              <div class="col-sm-9 text-secondary">org</div>
-              <span class="">Date d'optention</span>
-              <div class="col-sm-9 text-secondary">Date</div>
-              <span class="">Expire</span>
-              <div class="col-sm-9 text-secondary">Date</div>
-              <span class="">Credential Id</span>
-              <div class="col-sm-9 text-secondary">Credential Id</div>
-            </div>
-            <hr />
-            <div class="row">
+
+
               <div class="col-sm-12">
                 <a
+                  (click)="showModal(modalEditCertif)"
+                  data-toggle="modal"
+                  data-target="#exampleModalScrollable"
+                  href="#"
+                  class="btn btn-info"
+                  target="__blank"
+                  style="
+                    border-color: #5d2a42;
+                    background-color: #5d2a42;
+                    margin: 10px;
+                  "
+                  >Edit</a
+                >
+                <a
+                  (click)="showModal(modalAddCertif)"
+                  data-toggle="modal"
+                  data-target="#exampleModalScrollable"
                   class="btn btn-info"
                   target="__blank"
                   href="#"
                   style="border-color: #5d2a42; background-color: #5d2a42"
-                  >Edit</a
+                  >Ajouter</a
                 >
               </div>
-            </div>
-          </div>
+          </ul>
         </div>
       </div>
       <div class="col-md-8">
-        <div class="card mb-3">
-          <div class="card-body">
+         <div class="card mb-3">
+          <div *ngIf="user" class="card-body">
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Nom & Prénom</h6>
               </div>
-              <div class="col-sm-9 text-secondary">........</div>
+              <div class="col-sm-9 text-secondary">
+                {{ user.first_name }} {{ user.last_name }}
+              </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Email</h6>
               </div>
-              <div class="col-sm-9 text-secondary">........@gmail.com</div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Phone</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">+2126.........</div>
-            </div>
-
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Address</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                Bay Area, San Francisco, CA
-              </div>
+              <div class="col-sm-9 text-secondary">{{ user.email }}</div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-12">
                 <a
-                  class="btn btn-info"
-                  target="__blank"
+                  (click)="showModal(modalData)"
+                  data-toggle="modal"
+                  data-target="#exampleModalScrollable"
                   href="#"
+                  class="btn btn-info"
                   style="border-color: #5d2a42; background-color: #5d2a42"
                   >Edit</a
                 >
@@ -316,32 +249,46 @@
                     aria-valuemax="100"
                   ></div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-3 text-secondary">Date</div>
-                  <div>
-                    <h6 class="mb-0">Entreprise</h6>
+                <div *ngFor="let exp of experience">
+                  <div class="row">
+                    <div class="col-sm-3 text-secondary">
+                      {{ exp.endDate | date: "yyyy" }}
+                    </div>
+                    <div>
+                      <h6 class="mb-0">{{ exp.company_name }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ exp.description }}
+                    </div>
+                    <div class="col-sm-9 text-secondary"></div>
                   </div>
-                  <div class="col-sm-9 text-secondary">Description</div>
-                  <div class="col-sm-9 text-secondary">Outils</div>
+                  <hr />
                 </div>
-                <hr />
                 <div class="row">
-                  <div class="col-sm-3 text-secondary">Date</div>
-                  <div>
-                    <h6 class="mb-0">Entreprise</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">Description</div>
-                  <div class="col-sm-9 text-secondary">Outils</div>
-                </div>
-                <hr />
-                <div class="row">
-                  <div class="col-sm-12">
+                 <div class="col-sm-12">
                     <a
+                      (click)="showModal(modalUpdateExperience)"
+                      data-toggle="modal"
+                      data-target="#exampleModalScrollable"
+                      class="btn btn-info"
+                      target="__blank"
+                      href="#"
+                      style="
+                        border-color: #5d2a42;
+                        background-color: #5d2a42;
+                        margin: 10px;
+                      "
+                      >Edit</a
+                    >
+                    <a
+                      (click)="showModal(modalAddExperience)"
+                      data-toggle="modal"
+                      data-target="#exampleModalScrollable"
                       class="btn btn-info"
                       target="__blank"
                       href="#"
                       style="border-color: #5d2a42; background-color: #5d2a42"
-                      >Edit</a
+                      >Ajouter</a
                     >
                   </div>
                 </div>
@@ -351,10 +298,11 @@
 
           <div class="col-sm-12 mb-3">
             <div class="card h-100">
+         <div class="card h-100">
               <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3">
                   <i class="material-icons mr-2" style="color: #d18aab"
-                    >Projets</i
+                    >Projects</i
                   >
                 </h6>
                 <div class="progress mb-3" style="height: 5px">
@@ -367,30 +315,43 @@
                     aria-valuemax="100"
                   ></div>
                 </div>
-                <div>
+                <div *ngFor="let p of projects">
                   <div>
-                    <h6 class="mb-0 col-sm">Titre</h6>
+                    <div>
+                      <h6 class="mb-0 col-sm">{{ p.title }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ p.description }}
+                    </div>
+                    <div class="col-sm-9 text-secondary">Outils</div>
                   </div>
-                  <div class="col-sm-9 text-secondary">Description</div>
-                  <div class="col-sm-9 text-secondary">Outils</div>
+                  <hr />
                 </div>
-                <hr />
-                <div>
-                  <div>
-                    <h6 class="mb-0 col-sm">Titre</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">Description</div>
-                  <div class="col-sm-9 text-secondary">Outils</div>
-                </div>
-                <hr />
                 <div class="row">
                   <div class="col-sm-12">
                     <a
+                      (click)="showModal(modalUpdateProject)"
+                      data-toggle="modal"
+                      data-target="#exampleModalScrollable"
+                      class="btn btn-info"
+                      target="__blank"
+                      href="#"
+                      style="
+                        border-color: #5d2a42;
+                        background-color: #5d2a42;
+                        margin: 10px;
+                      "
+                      >Edit</a
+                    >
+                    <a
+                      (click)="showModal(modalAddProject)"
+                      data-toggle="modal"
+                      data-target="#exampleModalScrollable"
                       class="btn btn-info"
                       target="__blank"
                       href="#"
                       style="border-color: #5d2a42; background-color: #5d2a42"
-                      >Edit</a
+                      >Ajouter</a
                     >
                   </div>
                 </div>
@@ -400,5 +361,783 @@
         </div>
       </div>
     </div>
+    <!-- modal update profil -->
+    <ng-template #modalData let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit informations</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="nom"
+                      placeholder="nom"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Prenom</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="prenom"
+                      placeholder="prenom"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+
+    <!-- modal update profil -->
+
+    <!-- modal update links -->
+    <ng-template #modalLinks let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Links</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input class="form-control" type="text" placeholder="url" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Github</label>
+                    <input class="form-control" type="text" placeholder="url" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+
+    <!-- modal update links -->
+
+    <!-- modal update Formation -->
+    <ng-template #modalFormation let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Formation</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Début Formation</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="debutFormation"
+                      placeholder="01/01/2021"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Fin Formation</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="finFormation"
+                      placeholder="01/01/2021"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Intitulet de formation</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="intitulet"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Ecole</label>
+                    <input
+                      class="form-control"
+                      name="ecole"
+                      type="text"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Ville</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="ville"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+
+    <!-- modal update formation -->
+
+    <!-- modal add Formation -->
+    <ng-template #modalnewFormation let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ajouter Formation</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Début Formation</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="debutFormation"
+                      placeholder="01/01/2021"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Fin Formation</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="finFormation"
+                      placeholder="01/01/2021"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Intitulet de formation</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="intitulet"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Ecole</label>
+                    <input
+                      class="form-control"
+                      name="ecole"
+                      type="text"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Ville</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="ville"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <!-- modal add formation -->
+
+    <!-- modal update competence -->
+    <ng-template #modalCompetence let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Compétences</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+          <div class="wrap">
+            <div class="f1">
+              <label for="">Compétence</label>
+              <input class="form-control" placeholder="name" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- modal update competence -->
+
+    <!-- modal update Certif -->
+    <ng-template #modalEditCertif let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="col">
+            <div class="form-group">
+              <label>Titre</label>
+              <input
+                class="form-control"
+                type="text"
+                name="titreCertif"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Organisation</label>
+              <input
+                class="form-control"
+                type="text"
+                name="organisation"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label>Date d'optention</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  name="debutFormation"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Date d'expiration</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  name="finFormation"
+                  placeholder="01/01/2021"
+                />
+                <input type="checkbox" name="radioBtn" id="noExpireDate" />
+                <label>ne s'éxpire pas</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <!-- modal update certif -->
+
+    <!-- modal add Certif -->
+    <ng-template #modalAddCertif let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="col">
+            <div class="form-group">
+              <label>Titre</label>
+              <input
+                class="form-control"
+                type="text"
+                name="titreCertif"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Organisation</label>
+              <input
+                class="form-control"
+                type="text"
+                name="organisation"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label>Date d'optention</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  name="debutFormation"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Date d'expiration</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  name="finFormation"
+                  placeholder="01/01/2021"
+                />
+                <input type="checkbox" name="radioBtn" id="noExpireDate" />
+                <label>ne s'éxpire pas</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <!-- modal add certif -->
+
+    <!-- modal update experience -->
+    <ng-template #modalUpdateExperience let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Experiences</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="col">
+                <div class="form-group">
+                  <label>Entreprise</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="entreprise"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Description</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="description"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Outils</label>
+                  <input class="form-control" type="text" placeholder="" />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="dateExperience"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <!-- modal update experience -->
+
+    <!-- modal add experience -->
+    <ng-template #modalAddExperience let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ajouter Experiences</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="col">
+                <div class="form-group">
+                  <label>Entreprise</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="entreprise"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Description</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="description"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Outils</label>
+                  <input class="form-control" type="text" placeholder="" />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="dateExperience"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <!-- modal add experience -->
+
+    <!-- modal update projet -->
+    <ng-template #modalUpdateProject let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit projects</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+          <div class="col">
+            <div class="form-group">
+              <label for="">Title</label>
+              <input class="form-control"  placeholder="title" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Description</label>
+              <input class="form-control"  placeholder="description" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Link</label>
+              <input class="form-control" placeholder="link" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <button
+              class="btn btn-primary"
+              style="border-color: #5d2a42; background-color: #5d2a42"
+              type="submit"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- modal update project -->
+
+    <!-- modal add projet -->
+    <ng-template #modalAddProject let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ajouter projets</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+          <div class="col">
+            <div class="form-group">
+              <label for="">Title</label>
+              <input class="form-control"  [(ngModel)]="project.title" placeholder="title" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Description</label>
+              <input class="form-control" [(ngModel)]="project.description"  placeholder="description" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Link</label>
+              <input class="form-control"  [(ngModel)]="project.link" placeholder="description" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <button
+              class="btn btn-primary"
+              (click)="onAddProject()"
+              style="border-color: #5d2a42; background-color: #5d2a42"
+              type="submit"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- modal update project -->
   </div>
 </div>

@@ -24,6 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CompEditOfferComponent } from './Component/Company/comp-edit-offer/comp-edit-offer.component';
 import { StudHeaderComponent } from './Component/Student/stud-header/stud-header.component';
 import { StudProfileComponent } from './Component/Student/stud-profile/stud-profile.component';
+import { StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
+import { StudOrganizeComponent } from './Component/Student/stud-organize/stud-organize.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { StudProfileComponent } from './Component/Student/stud-profile/stud-prof
     HeaderComponent,
     CompEditOfferComponent,
     StudHeaderComponent,
-    StudProfileComponent
+    StudProfileComponent,
+    StudHomeComponent,
+    StudOrganizeComponent
   ],
 
   imports: [

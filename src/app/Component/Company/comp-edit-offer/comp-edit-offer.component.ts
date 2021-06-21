@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/Authentification/auth.service';
@@ -9,22 +9,34 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-comp-edit-offer',
   templateUrl: './comp-edit-offer.component.html',
-  styleUrls: ['./comp-edit-offer.component.scss']
+  styleUrls: ['./comp-edit-offer.component.scss'],
 })
 export class CompEditOfferComponent implements OnInit {
   closeModal: string;
   isLoggedIn: boolean;
   url: string;
   company_name: string;
+  currentOffer = {
+    id: '',
+    title: '',
+    offer_type: 1,
+    skills: [],
+    entreprise_name: '',
+    description: '',
+    link: '',
+    city: '',
+  };
   form = new FormGroup({
     offer_type: new FormControl('', Validators.required),
     offer_form: new FormControl('', Validators.required),
   });
-  constructor(    private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     public offerServicce: OfferService,
     private authService: AuthService,
     public router: Router,
-    private token: TokenStorageService) { }
+    private token: TokenStorageService
+  ) {}
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -112,4 +124,5 @@ export class CompEditOfferComponent implements OnInit {
       }
     );
   }
+
 }

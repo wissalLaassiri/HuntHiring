@@ -20,8 +20,8 @@ export class OfferService {
     }),
     observe: 'response' as 'body',
   };
-  constructor(private http: HttpClient, private token: TokenStorageService,
-    ) {}
+
+  constructor(private http: HttpClient, private token: TokenStorageService) {}
 
   addSkills(skill: any, url: string): Observable<any> {
     return this.http
@@ -38,6 +38,7 @@ export class OfferService {
         catchError(this.handleError)
       );
   }
+  //========================Add new offers ==========================
   addOffer(offer: any, url: string) {
     return this.http
       .post<HttpResponse<any>>(
@@ -53,7 +54,7 @@ export class OfferService {
         catchError(this.handleError)
       );
   }
-
+  // ========================= get Offers ===========================
   getOffers(): Observable<any> {
     let authToken = this.token.getUser();
     authToken = 'Bearer ' + authToken;
@@ -61,12 +62,40 @@ export class OfferService {
       map((res) => {
         const detail = res['body'];
         this.token.type = JSON.stringify(detail['type']);
-       console.log("det  ",detail);
-       return detail;
+        console.log('det  ', detail);
+        return detail;
       }),
       catchError(this.handleError)
     );
   }
+  // ========================= get Offers by id ===========================
+  getOffersById(id : any): Observable<any> {
+    let authToken = this.token.getUser();
+    authToken = 'Bearer ' + authToken;
+    return this.http.get(this.endpoint + `/offer/${id}/`, this.httpOptions).pipe(
+      map((res) => {
+        const detail = res['body'];
+        console.log('offeer BY ID  ', detail);
+        return detail;
+      }),
+      catchError(this.handleError)
+    );
+  }
+    // ========================= get Offers by search ===========================
+    getOffersByKey(key : any): Observable<any> {
+      let authToken = this.token.getUser();
+      authToken = 'Bearer ' + authToken;
+      return this.http.get(this.endpoint + `/offer/?search=${key}`, this.httpOptions).pipe(
+        map((res) => {
+          const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+    }
+
+
+  //======================== Handle form errors ==========================
   handleError(error: HttpErrorResponse) {
     let msg = {};
     if (error.status === 400) {

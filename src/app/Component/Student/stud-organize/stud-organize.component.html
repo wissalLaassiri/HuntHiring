@@ -1,0 +1,153 @@
+<app-stud-header></app-stud-header>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+  integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+  crossorigin="anonymous"
+/>
+<div class="alert alert-success" role="alert">
+  Application deleted
+</div>
+<div class="container">
+  <div class="col-md-12 col-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Applications</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th class="text-center">
+                  <div
+                    class="custom-checkbox custom-checkbox-table custom-control"
+                  >
+                    <input
+                      type="checkbox"
+                      data-checkboxes="mygroup"
+                      data-checkbox-role="dad"
+                      class="custom-control-input"
+                      id="checkbox-all"
+                    />
+                    <label for="checkbox-all" class="custom-control-label"
+                      >&nbsp;</label
+                    >
+                  </div>
+                </th>
+                <th>Title</th>
+                <th>Note</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+              <tr *ngFor="let a of applications">
+                <td  class="p-0 text-center">
+                  <div class="custom-checkbox custom-control">
+                    <input
+                      type="checkbox"
+                      data-checkboxes="mygroup"
+                      class="custom-control-input"
+                      id="checkbox-1"
+                    />
+                    <label for="checkbox-1" class="custom-control-label"
+                      >&nbsp;</label
+                    >
+                  </div>
+                </td>
+                <td  *ngIf="a.offer==offer.id">{{offer.title}}</td>
+                <td  *ngIf="a.offer!=offer.id">Test</td>
+                <td class="align-middle">
+
+                    {{a.note}}
+                </td>
+                <td>{{a.date | date}}</td>
+                <td>
+                  <a
+                  (click)="showModal(modalFormation)"
+                    class="btn btn-primary btn-action mr-1"
+                    data-toggle="tooltip"
+                    title=""
+                    data-original-title="Edit"
+                    ><i class="fas fa-pencil-alt"></i
+                  ></a>
+                  <a
+                    class="btn btn-danger btn-action"
+                    data-toggle="tooltip"
+                    title=""
+                    data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                    data-confirm-yes="alert('Deleted')"
+                    data-original-title="Delete"
+                    ><i class="fas fa-trash"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+          <!-- modal update Formation -->
+    <ng-template #modalFormation let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Application</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" novalidate="">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Title of offer</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="intitulet"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Note about offer</label>
+                    <input
+                      class="form-control"
+                      name="ecole"
+                      type="text"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+
+    </div>
+  </div>
+</div>

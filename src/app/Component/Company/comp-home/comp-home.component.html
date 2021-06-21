@@ -63,9 +63,10 @@
                   <i class="zmdi zmdi-pin mr-2"></i> {{o.city}}
                 </li>
                 <li class="mr-md-4">
-                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==1" >Internship</i>
+                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==1">Internship</i>
                   <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==2" >CDD</i>
                   <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==3" >CDI</i>
+                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==4" >Freelance</i>
                 </li>
                 <li class="mr-md-4">
                   <i class="zmdi zmdi-time mr-2"></i> {{o.created_on | date}}

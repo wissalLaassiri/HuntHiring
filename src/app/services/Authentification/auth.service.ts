@@ -32,7 +32,7 @@ export class AuthService {
     public router: Router
   ) {}
 
-  //Sign-In
+  //================================Sign-In==========================
   login(email: string, password: string): Observable<any> {
     return this.http
       .post(
@@ -52,7 +52,7 @@ export class AuthService {
       );
   }
 
-  // Sign-up
+  //===========================Sign-up========================
   addUser(user: User, url: string): Observable<User> {
     return this.http
       .post<HttpResponse<User>>(
@@ -69,6 +69,7 @@ export class AuthService {
       );
   }
 
+  //====================== get user role =====================
   getRole(): Observable<any> {
     let authToken = this.token.getUser();
     authToken = 'Bearer ' + authToken;
@@ -76,15 +77,116 @@ export class AuthService {
       map((res) => {
         const detail = res['body'];
         this.token.type = JSON.stringify(detail['type']);
-       console.log("det  ",detail);
-       console.log("typee in auth  ",this.token.type);
-       return detail;
+        console.log('det  ', detail);
+        console.log('typee in auth  ', this.token.type);
+        return detail;
       }),
       catchError(this.handleError)
     );
   }
 
-  // Error
+  // ========================= get Education ===========================
+  getEducation(): Observable<any> {
+    return this.http.get(this.endpoint + '/education/', this.httpOptions).pipe(
+      map((res) => {
+        const detail = res['body'];
+        console.log('det  ', detail);
+        return detail;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  // ========================= get Experience ===========================
+  getExperience(): Observable<any> {
+    return this.http.get(this.endpoint + '/experience/', this.httpOptions).pipe(
+      map((res) => {
+        const detail = res['body'];
+        console.log('det  ', detail);
+        return detail;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  // ========================= get Skills ===========================
+  getSkills(id: number): Observable<any> {
+    return this.http.get(this.endpoint + '/skill/' + id, this.httpOptions).pipe(
+      map((res) => {
+        const detail = res['body'];
+        return detail;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  // ========================= get Projects ===========================
+  getProjects(): Observable<any> {
+    let authToken = this.token.getUser();
+    authToken = 'Bearer ' + authToken;
+    return this.http.get(this.endpoint + '/project/', this.httpOptions).pipe(
+      map((res) => {
+        const detail = res['body'];
+        return detail;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  // ========================= get Certifications ===========================
+  getCertifications(): Observable<any> {
+    return this.http
+      .get(this.endpoint + '/certificate/', this.httpOptions)
+      .pipe(
+        map((res) => {
+          const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  //==================== get Applications ========================
+  getApplications(): Observable<any> {
+    return this.http
+      .get(this.endpoint + '/application/', this.httpOptions)
+      .pipe(
+        map((res) => {
+          const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  //========================== Add projects =======================
+
+  addProjects(project: any, url: string): Observable<any> {
+    return this.http
+      .post<HttpResponse<any>>(
+        this.endpoint + url,
+        JSON.stringify(project),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  //============================ Add Application ==================
+  addApplication(application: any, url: string): Observable<any> {
+    return this.http
+      .post<HttpResponse<any>>(
+        this.endpoint + url,
+        JSON.stringify(application),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  //============================ Handle form Errors ===============
   handleError(error: HttpErrorResponse) {
     let msg = {
       first_name: '',
