@@ -6,9 +6,11 @@
   integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
   crossorigin="anonymous"
 />
-<div class="alert alert-success" role="alert">
+
+<!--<div class="alert alert-success" role="alert">
   Application deleted
-</div>
+</div>-->
+
 <div class="container">
   <div class="col-md-12 col-12 col-sm-12">
     <div class="card">
@@ -41,8 +43,9 @@
                 <th>Date</th>
                 <th>Action</th>
               </tr>
+
               <tr *ngFor="let a of applications">
-                <td  class="p-0 text-center">
+                <td class="p-0 text-center">
                   <div class="custom-checkbox custom-control">
                     <input
                       type="checkbox"
@@ -55,16 +58,17 @@
                     >
                   </div>
                 </td>
-                <td  *ngIf="a.offer==offer.id">{{offer.title}}</td>
-                <td  *ngIf="a.offer!=offer.id">Test</td>
+                <div *ngFor="let o of offers" >
+                <td  *ngIf="a.offer === o.id">{{ o.title }}</td>
+                </div>
+               <!-- <td>test</td>-->
                 <td class="align-middle">
-
-                    {{a.note}}
+                  {{ a.note }}
                 </td>
-                <td>{{a.date | date}}</td>
+                <td>{{ a.date | date }}</td>
                 <td>
                   <a
-                  (click)="showModal(modalFormation)"
+                    (click)="showModal(modalFormation); onGetAppById(a.id)"
                     class="btn btn-primary btn-action mr-1"
                     data-toggle="tooltip"
                     title=""
@@ -75,9 +79,7 @@
                     class="btn btn-danger btn-action"
                     data-toggle="tooltip"
                     title=""
-                    data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                    data-confirm-yes="alert('Deleted')"
-                    data-original-title="Delete"
+                     (click)="onDeleteApp(a.id)"
                     ><i class="fas fa-trash"></i
                   ></a>
                 </td>
@@ -87,67 +89,55 @@
         </div>
       </div>
 
-          <!-- modal update Formation -->
-    <ng-template #modalFormation let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Application</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Title of offer</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="intitulet"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Note about offer</label>
-                    <input
-                      class="form-control"
-                      name="ecole"
-                      type="text"
-                      placeholder=""
-                    />
+      <!-- modal update Formation -->
+      <ng-template #modalFormation let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Application</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Note about offer</label>
+                      <input
+                        class="form-control"
+                        name="ecole"
+                        [(ngModel)]="note"
+                        type="text"
+                        placeholder=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                   (click)="onEdit(currentApp.id)"
+                >
+                  Save Changes
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-
+          </form>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

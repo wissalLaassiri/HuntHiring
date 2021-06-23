@@ -96,6 +96,19 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  // ========================= get Education By Id===========================
+  getEducationById(id: any): Observable<any> {
+    return this.http
+      .get(this.endpoint + `/education/${id}/`, this.httpOptions)
+      .pipe(
+        map((res) => {
+          const detail = res['body'];
+          console.log('det  ', detail);
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // ========================= get Experience ===========================
   getExperience(): Observable<any> {
     return this.http.get(this.endpoint + '/experience/', this.httpOptions).pipe(
@@ -129,6 +142,18 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+   // ========================= get Project By Id===========================
+   getProjectById(id: any): Observable<any> {
+    return this.http
+      .get(this.endpoint + `/project/${id}/`, this.httpOptions)
+      .pipe(
+        map((res) => {
+          const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // ========================= get Certifications ===========================
   getCertifications(): Observable<any> {
     return this.http
@@ -148,6 +173,21 @@ export class AuthService {
       .pipe(
         map((res) => {
           const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // ========================= get application by id ===========================
+  getApplicationsById(id: any): Observable<any> {
+    let authToken = this.token.getUser();
+    authToken = 'Bearer ' + authToken;
+    return this.http
+      .get(this.endpoint + `/application/${id}/`, this.httpOptions)
+      .pipe(
+        map((res) => {
+          const detail = res['body'];
+          // console.log('offeer BY ID  ', detail);
           return detail;
         }),
         catchError(this.handleError)
@@ -183,6 +223,66 @@ export class AuthService {
           return response.body;
         }),
         retry(1),
+        catchError(this.handleError)
+      );
+  }
+  //============================ Edit Application ==================
+  editApplication(application: any): Observable<any> {
+    return this.http
+      .put<HttpResponse<any>>(
+        this.endpoint + `/application/${application.id}/`,
+        JSON.stringify(application),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  //============================ Edit Education ==================
+  editEducation(id: any, education: any): Observable<any> {
+    return this.http
+      .put<HttpResponse<any>>(
+        this.endpoint + `/education/${id}/`,
+        JSON.stringify(education),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+   //============================ Edit Projects ==================
+   editProject(id: any, project: any): Observable<any> {
+    return this.http
+      .put<HttpResponse<any>>(
+        this.endpoint + `/project/${id}/`,
+        JSON.stringify(project),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  // ========================= delete application by id ===========================
+  deleteApplication(id: any): Observable<any> {
+    return this.http
+      .delete(this.endpoint + `/application/${id}/`, this.httpOptions)
+      .pipe(
+        map((res) => {
+          console.log('done delete');
+          return;
+        }),
         catchError(this.handleError)
       );
   }

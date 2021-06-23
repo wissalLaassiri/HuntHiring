@@ -38,7 +38,8 @@
           </div>
           <ul class="list-group list-group-flush">
             <li
-              *ngFor="let e of education"
+              *ngFor="let e of educations"
+              (click)="showModal(modalFormation); onGetEducationById(e.id)"
               class="
                 list-group-item
                 d-flex
@@ -57,21 +58,6 @@
             <hr />
 
             <div class="col-sm-12">
-              <a
-                (click)="showModal(modalFormation)"
-                data-toggle="modal"
-                data-target="#exampleModalScrollable"
-                class="btn btn-info"
-                target="__blank"
-                href="#"
-                style="
-                  border-color: #5d2a42;
-                  background-color: #5d2a42;
-                  margin: 10px;
-                "
-                >Edit</a
-              >
-
               <a
                 (click)="showModal(modalnewFormation)"
                 data-toggle="modal"
@@ -126,9 +112,11 @@
             </div>
           </div>
         </div>
-<div class="card mt-3">
+        <div class="card mt-3">
           <h6 class="d-flex align-items-center mb-3">
-            <i class="material-icons mr-2" style="color: #d18aab">Certification</i>
+            <i class="material-icons mr-2" style="color: #d18aab"
+              >Certification</i
+            >
           </h6>
           <div class="progress mb-3" style="height: 5px">
             <div
@@ -143,10 +131,10 @@
 
           <ul *ngFor="let c of certif" class="list-group list-group-flush">
             <div>
-                <h6 class="mb-0 col-sm" style="color: #66505a">
-                  {{c.title}}
-                </h6>
-              </div>
+              <h6 class="mb-0 col-sm" style="color: #66505a">
+                {{ c.title }}
+              </h6>
+            </div>
             <li
               class="
                 list-group-item
@@ -156,47 +144,46 @@
                 flex-wrap
               "
             >
-              <h6 class="mb-0" style="color: #5d2a42">
-                Organisation
-              </h6>
+              <h6 class="mb-0" style="color: #5d2a42">Organisation</h6>
               <span class="">{{ c.organization }}</span>
-              <div class="col-sm-9 text-secondary">{{ c.issueDate |date}}</div>
+              <div class="col-sm-9 text-secondary">
+                {{ c.issueDate | date }}
+              </div>
               <div class="col-sm-9 text-secondary">{{ c.credential_id }}</div>
             </li>
             <hr />
 
-
-              <div class="col-sm-12">
-                <a
-                  (click)="showModal(modalEditCertif)"
-                  data-toggle="modal"
-                  data-target="#exampleModalScrollable"
-                  href="#"
-                  class="btn btn-info"
-                  target="__blank"
-                  style="
-                    border-color: #5d2a42;
-                    background-color: #5d2a42;
-                    margin: 10px;
-                  "
-                  >Edit</a
-                >
-                <a
-                  (click)="showModal(modalAddCertif)"
-                  data-toggle="modal"
-                  data-target="#exampleModalScrollable"
-                  class="btn btn-info"
-                  target="__blank"
-                  href="#"
-                  style="border-color: #5d2a42; background-color: #5d2a42"
-                  >Ajouter</a
-                >
-              </div>
+            <div class="col-sm-12">
+              <a
+                (click)="showModal(modalEditCertif)"
+                data-toggle="modal"
+                data-target="#exampleModalScrollable"
+                href="#"
+                class="btn btn-info"
+                target="__blank"
+                style="
+                  border-color: #5d2a42;
+                  background-color: #5d2a42;
+                  margin: 10px;
+                "
+                >Edit</a
+              >
+              <a
+                (click)="showModal(modalAddCertif)"
+                data-toggle="modal"
+                data-target="#exampleModalScrollable"
+                class="btn btn-info"
+                target="__blank"
+                href="#"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                >Ajouter</a
+              >
+            </div>
           </ul>
         </div>
       </div>
       <div class="col-md-8">
-         <div class="card mb-3">
+        <div class="card mb-3">
           <div *ngIf="user" class="card-body">
             <div class="row">
               <div class="col-sm-3">
@@ -265,7 +252,7 @@
                   <hr />
                 </div>
                 <div class="row">
-                 <div class="col-sm-12">
+                  <div class="col-sm-12">
                     <a
                       (click)="showModal(modalUpdateExperience)"
                       data-toggle="modal"
@@ -298,846 +285,865 @@
 
           <div class="col-sm-12 mb-3">
             <div class="card h-100">
-         <div class="card h-100">
-              <div class="card-body">
-                <h6 class="d-flex align-items-center mb-3">
-                  <i class="material-icons mr-2" style="color: #d18aab"
-                    >Projects</i
-                  >
-                </h6>
-                <div class="progress mb-3" style="height: 5px">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 100%; background-color: #5d2a42"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-                <div *ngFor="let p of projects">
-                  <div>
-                    <div>
-                      <h6 class="mb-0 col-sm">{{ p.title }}</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{ p.description }}
-                    </div>
-                    <div class="col-sm-9 text-secondary">Outils</div>
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3">
+                    <i class="material-icons mr-2" style="color: #d18aab"
+                      >Projects</i
+                    >
+                  </h6>
+                  <div class="progress mb-3" style="height: 5px">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 100%; background-color: #5d2a42"
+                      aria-valuenow="80"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
                   </div>
-                  <hr />
+                  <div *ngFor="let p of projects">
+                    <div>
+                      <div>
+                        <h6 class="mb-0 col-sm">{{ p.title }}</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{ p.description }}
+                      </div>
+                      <div class="col-sm-9 text-secondary">Outils</div>
+                      <a
+                        (click)="onGetProjectsById(p.id);showModal(modalUpdateProject)"
+                        data-toggle="modal"
+                        data-target="#exampleModalScrollable"
+                        class="btn btn-info"
+                        target="__blank"
+                        href="#"
+                        style="
+                          border-color: #5d2a42;
+                          background-color: #5d2a42;
+                          margin: 10px;
+                        "
+                        >Edit</a
+                      >
+                    </div>
+                    <hr />
+                  </div>
+                  <div class="row marg">
+                    <div class="col-sm-12">
+                      <a
+                        (click)="showModal(modalAddProject)"
+                        data-toggle="modal"
+                        data-target="#exampleModalScrollable"
+                        class="btn btn-info"
+                        target="__blank"
+                        href="#"
+                        style="border-color: #5d2a42; background-color: #5d2a42"
+                        >Ajouter</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal update profil -->
+      <ng-template #modalData let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit informations</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Nom</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="nom"
+                        placeholder="nom"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Prenom</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="prenom"
+                        placeholder="prenom"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-12">
-                    <a
-                      (click)="showModal(modalUpdateProject)"
-                      data-toggle="modal"
-                      data-target="#exampleModalScrollable"
-                      class="btn btn-info"
-                      target="__blank"
-                      href="#"
-                      style="
-                        border-color: #5d2a42;
-                        background-color: #5d2a42;
-                        margin: 10px;
-                      "
-                      >Edit</a
-                    >
-                    <a
-                      (click)="showModal(modalAddProject)"
-                      data-toggle="modal"
-                      data-target="#exampleModalScrollable"
-                      class="btn btn-info"
-                      target="__blank"
-                      href="#"
-                      style="border-color: #5d2a42; background-color: #5d2a42"
-                      >Ajouter</a
-                    >
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Email"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+      <!-- modal update profil -->
+
+      <!-- modal update links -->
+      <ng-template #modalLinks let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Links</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Github</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="url"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+      <!-- modal update links -->
+
+      <!-- modal update Formation -->
+      <ng-template #modalFormation let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Formation</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Début Formation</label>
+                      <input
+                        class="form-control"
+                        type="date"
+                        [(ngModel)]="education.startDate"
+                        name="debutFormation"
+                        placeholder="01/01/2021"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Fin Formation</label>
+                      <input
+                        class="form-control"
+                        type="date"
+                        [(ngModel)]="education.endDate"
+                        name="finFormation"
+                        placeholder="01/01/2021"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Intitulet de formation</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="education.title"
+                        name="intitulet"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Ecole</label>
+                      <input
+                        class="form-control"
+                        name="ecole"
+                        [(ngModel)]="education.school"
+                        type="text"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Ville</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="education.city"
+                        placeholder="currentEducation.city"
+                        name="ville"
+
+                        value="currentEducation.city"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                  (click)="onEditEducation(currentEducation.id)"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+      <!-- modal update formation -->
+
+      <!-- modal add Formation -->
+      <ng-template #modalnewFormation let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Ajouter Formation</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Début Formation</label>
+                      <input
+                        class="form-control"
+                        type="date"
+                        name="debutFormation"
+                        placeholder="01/01/2021"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Fin Formation</label>
+                      <input
+                        class="form-control"
+                        type="date"
+                        name="finFormation"
+                        placeholder="01/01/2021"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Intitulet de formation</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="intitulet"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Ecole</label>
+                      <input
+                        class="form-control"
+                        name="ecole"
+                        type="text"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Ville</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="ville"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- modal add formation -->
+
+      <!-- modal update competence -->
+      <ng-template #modalCompetence let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Compétences</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="wrap">
+              <div class="f1">
+                <label for="">Compétence</label>
+                <input class="form-control" placeholder="name" />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-template>
+      <!-- modal update competence -->
+
+      <!-- modal update Certif -->
+      <ng-template #modalEditCertif let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="col">
+              <div class="form-group">
+                <label>Titre</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="titreCertif"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Organisation</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="organisation"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Date d'optention</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="debutFormation"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Date d'expiration</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="finFormation"
+                    placeholder="01/01/2021"
+                  />
+                  <input type="checkbox" name="radioBtn" id="noExpireDate" />
+                  <label>ne s'éxpire pas</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- modal update certif -->
+
+      <!-- modal add Certif -->
+      <ng-template #modalAddCertif let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="col">
+              <div class="form-group">
+                <label>Titre</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="titreCertif"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Organisation</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="organisation"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Date d'optention</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="debutFormation"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Date d'expiration</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="finFormation"
+                    placeholder="01/01/2021"
+                  />
+                  <input type="checkbox" name="radioBtn" id="noExpireDate" />
+                  <label>ne s'éxpire pas</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- modal add certif -->
+
+      <!-- modal update experience -->
+      <ng-template #modalUpdateExperience let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit Experiences</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Entreprise</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="entreprise"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="description"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Outils</label>
+                    <input class="form-control" type="text" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="dateExperience"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- modal update experience -->
+
+      <!-- modal add experience -->
+      <ng-template #modalAddExperience let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            Ajouter Experiences
+          </h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" novalidate="">
+            <div class="row">
+              <div class="col">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Entreprise</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="entreprise"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="description"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Outils</label>
+                    <input class="form-control" type="text" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="dateExperience"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col d-flex justify-content-end">
+                <button
+                  class="btn btn-primary"
+                  style="border-color: #5d2a42; background-color: #5d2a42"
+                  type="submit"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- modal add experience -->
+
+      <!-- modal update projet -->
+      <ng-template #modalUpdateProject let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Edit projects</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="col">
+              <div class="form-group">
+                <label for="">Title</label>
+                <input class="form-control"  [(ngModel)]="project.title" placeholder="title" />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="">Description</label>
+                <input class="form-control"  [(ngModel)]="project.description" placeholder="description" />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="">Link</label>
+                <input class="form-control" placeholder="link" />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+                (click)="onEditProject(currentProject.id)"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <!-- modal update project -->
+
+      <!-- modal add projet -->
+      <ng-template #modalAddProject let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Ajouter projets</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="col">
+              <div class="form-group">
+                <label for="">Title</label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="project.title"
+                  placeholder="title"
+                />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="">Description</label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="project.description"
+                  placeholder="description"
+                />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="">Link</label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="project.link"
+                  placeholder="description"
+                />
+                <span class="focus-input"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+              <button
+                class="btn btn-primary"
+                (click)="onAddProject()"
+                style="border-color: #5d2a42; background-color: #5d2a42"
+                type="submit"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <!-- modal update project -->
     </div>
-    <!-- modal update profil -->
-    <ng-template #modalData let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit informations</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Nom</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="nom"
-                      placeholder="nom"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Prenom</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="prenom"
-                      placeholder="prenom"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-
-    <!-- modal update profil -->
-
-    <!-- modal update links -->
-    <ng-template #modalLinks let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Links</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>LinkedIn</label>
-                    <input class="form-control" type="text" placeholder="url" />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Github</label>
-                    <input class="form-control" type="text" placeholder="url" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-
-    <!-- modal update links -->
-
-    <!-- modal update Formation -->
-    <ng-template #modalFormation let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Formation</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Début Formation</label>
-                    <input
-                      class="form-control"
-                      type="date"
-                      name="debutFormation"
-                      placeholder="01/01/2021"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Fin Formation</label>
-                    <input
-                      class="form-control"
-                      type="date"
-                      name="finFormation"
-                      placeholder="01/01/2021"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Intitulet de formation</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="intitulet"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Ecole</label>
-                    <input
-                      class="form-control"
-                      name="ecole"
-                      type="text"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Ville</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="ville"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-
-    <!-- modal update formation -->
-
-    <!-- modal add Formation -->
-    <ng-template #modalnewFormation let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Ajouter Formation</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Début Formation</label>
-                    <input
-                      class="form-control"
-                      type="date"
-                      name="debutFormation"
-                      placeholder="01/01/2021"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Fin Formation</label>
-                    <input
-                      class="form-control"
-                      type="date"
-                      name="finFormation"
-                      placeholder="01/01/2021"
-                    />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Intitulet de formation</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="intitulet"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Ecole</label>
-                    <input
-                      class="form-control"
-                      name="ecole"
-                      type="text"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Ville</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      name="ville"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-    <!-- modal add formation -->
-
-    <!-- modal update competence -->
-    <ng-template #modalCompetence let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Compétences</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div class="wrap">
-            <div class="f1">
-              <label for="">Compétence</label>
-              <input class="form-control" placeholder="name" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-    <!-- modal update competence -->
-
-    <!-- modal update Certif -->
-    <ng-template #modalEditCertif let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="col">
-            <div class="form-group">
-              <label>Titre</label>
-              <input
-                class="form-control"
-                type="text"
-                name="titreCertif"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Organisation</label>
-              <input
-                class="form-control"
-                type="text"
-                name="organisation"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Date d'optention</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  name="debutFormation"
-                  placeholder=""
-                />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label>Date d'expiration</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  name="finFormation"
-                  placeholder="01/01/2021"
-                />
-                <input type="checkbox" name="radioBtn" id="noExpireDate" />
-                <label>ne s'éxpire pas</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-    <!-- modal update certif -->
-
-    <!-- modal add Certif -->
-    <ng-template #modalAddCertif let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Certification</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="col">
-            <div class="form-group">
-              <label>Titre</label>
-              <input
-                class="form-control"
-                type="text"
-                name="titreCertif"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Organisation</label>
-              <input
-                class="form-control"
-                type="text"
-                name="organisation"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Date d'optention</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  name="debutFormation"
-                  placeholder=""
-                />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label>Date d'expiration</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  name="finFormation"
-                  placeholder="01/01/2021"
-                />
-                <input type="checkbox" name="radioBtn" id="noExpireDate" />
-                <label>ne s'éxpire pas</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-    <!-- modal add certif -->
-
-    <!-- modal update experience -->
-    <ng-template #modalUpdateExperience let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit Experiences</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="col">
-                <div class="form-group">
-                  <label>Entreprise</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="entreprise"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Description</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="description"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Outils</label>
-                  <input class="form-control" type="text" placeholder="" />
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Date</label>
-                  <input
-                    class="form-control"
-                    type="date"
-                    name="dateExperience"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-    <!-- modal update experience -->
-
-    <!-- modal add experience -->
-    <ng-template #modalAddExperience let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Ajouter Experiences</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form" novalidate="">
-          <div class="row">
-            <div class="col">
-              <div class="col">
-                <div class="form-group">
-                  <label>Entreprise</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="entreprise"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Description</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="description"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Outils</label>
-                  <input class="form-control" type="text" placeholder="" />
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Date</label>
-                  <input
-                    class="form-control"
-                    type="date"
-                    name="dateExperience"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                style="border-color: #5d2a42; background-color: #5d2a42"
-                type="submit"
-              >
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ng-template>
-    <!-- modal add experience -->
-
-    <!-- modal update projet -->
-    <ng-template #modalUpdateProject let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Edit projects</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div class="col">
-            <div class="form-group">
-              <label for="">Title</label>
-              <input class="form-control"  placeholder="title" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="">Description</label>
-              <input class="form-control"  placeholder="description" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="">Link</label>
-              <input class="form-control" placeholder="link" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col d-flex justify-content-end">
-            <button
-              class="btn btn-primary"
-              style="border-color: #5d2a42; background-color: #5d2a42"
-              type="submit"
-            >
-              Save changes
-            </button>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-    <!-- modal update project -->
-
-    <!-- modal add projet -->
-    <ng-template #modalAddProject let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Ajouter projets</h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div class="col">
-            <div class="form-group">
-              <label for="">Title</label>
-              <input class="form-control"  [(ngModel)]="project.title" placeholder="title" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="">Description</label>
-              <input class="form-control" [(ngModel)]="project.description"  placeholder="description" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="">Link</label>
-              <input class="form-control"  [(ngModel)]="project.link" placeholder="description" />
-              <span class="focus-input"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col d-flex justify-content-end">
-            <button
-              class="btn btn-primary"
-              (click)="onAddProject()"
-              style="border-color: #5d2a42; background-color: #5d2a42"
-              type="submit"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-    <!-- modal update project -->
   </div>
 </div>

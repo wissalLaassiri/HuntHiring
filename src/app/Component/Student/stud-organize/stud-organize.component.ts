@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/Authentification/auth.service';
@@ -8,19 +8,30 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-stud-organize',
   templateUrl: './stud-organize.component.html',
-  styleUrls: ['./stud-organize.component.scss']
+  styleUrls: ['./stud-organize.component.scss'],
 })
 export class StudOrganizeComponent implements OnInit {
   offers = [];
   user: any;
   applications = [];
-  offer:any;
+  currentApp: any;
+  newApp = {
+    id: '',
+    title: '',
+    date: '',
+    note: '',
+  };
+  newapps = [];
+  offer: any;
   closeModal: string;
-  constructor(    private token: TokenStorageService,
+  @Input() note = '';
+  constructor(
+    private token: TokenStorageService,
     private authService: AuthService,
     public offerServicce: OfferService,
     private modalService: NgbModal,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -31,13 +42,17 @@ export class StudOrganizeComponent implements OnInit {
     }
   }
 
-  onGetApplications(){
+  onGetApplications() {
     this.authService.getApplications().subscribe(
       (data) => {
-        this.applications= data;
-        this.applications.forEach(a=>{
-          this.offer = this.onGetOffers(a.offer);
-        })
+        this.applications = data;
+        this.applications.forEach((a) => {
+          this.onGetOffers(a.offer);
+          // this.newApp=a;
+          // this.newapps.push(this.newApp);
+          // console.log('test is ', a.id);
+        });
+        console.log('useerrr offers ', this.newapps);
         console.log('useerrr application ', this.applications);
       },
       (error) => {
@@ -46,14 +61,27 @@ export class StudOrganizeComponent implements OnInit {
     );
   }
 
+  //===============================get application by Id  ============
+  onGetAppById(id: any) {
+    this.authService.getApplicationsById(id).subscribe(
+      (data) => {
+        this.currentApp = data;
+        console.log('curent app ', this.currentApp);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   //===============================get offer details ============
-  onGetOffers(id:any){
+  onGetOffers(id: any) {
     this.offerServicce.getOffersById(id).subscribe(
       (data) => {
-        this.offer= data;
+        this.offer = data;
+        // console.log("current offer ",this.offer);
         this.offers.push(data);
-        return data;
-        console.log('useerrr offers ', this.offers);
+        this.newapps.push(data);
       },
       (error) => {
         console.log(error);
@@ -65,13 +93,48 @@ export class StudOrganizeComponent implements OnInit {
     this.authService.getRole().subscribe(
       (data) => {
         this.user = data;
-        console.log('useerrr home ', this.user);
+        // console.log('useerrr home ', this.user);
       },
       (error) => {
         console.log(error);
         this.router.navigate(['/login']);
       }
     );
+  }
+
+  // ====================OnEdit applicatiooon ===================
+  onEdit(id: any) {
+    this.onGetAppById(id);
+    this.currentApp.note = this.note;
+    this.authService.editApplication(this.currentApp).subscribe(
+      (response) => {
+        console.log('doonee edit', response);
+        this.refresh();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+
+
+  // ====================OnDelete applicatiooon ===================
+  onDeleteApp(id: any) {
+    this.authService.deleteApplication(id).subscribe(
+      (response) => {
+        console.log('doonee delete', response);
+        this.refresh();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  //============ refresh page ==============
+  refresh(): void {
+    window.location.reload();
   }
 
   showModal(content) {

@@ -75,7 +75,7 @@ export class OfferService {
     return this.http.get(this.endpoint + `/offer/${id}/`, this.httpOptions).pipe(
       map((res) => {
         const detail = res['body'];
-        console.log('offeer BY ID  ', detail);
+        // console.log('offeer BY ID  ', detail);
         return detail;
       }),
       catchError(this.handleError)

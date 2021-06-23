@@ -12,19 +12,30 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class StudProfileComponent implements OnInit {
   user: any;
-  education: any;
+  educations: any;
   experience: any;
   skills: any;
   projects:any;
   certif:any;
   closeModal: string;
   url: string;
+  currentEducation:any;
+  currentProject :any;
 
   @Input() project = {
     id: '',
     title:'',
     description:'',
     link:''
+  };
+  @Input() education = {
+    id:'',
+    title:'',
+    education_level:0,
+    school:'',
+    startDate:'',
+    endDate:'',
+    city:''
   };
   constructor(
     private token: TokenStorageService,
@@ -62,8 +73,19 @@ export class StudProfileComponent implements OnInit {
   onGetEducation() {
     this.authService.getEducation().subscribe(
       (data) => {
-        this.education = data;
-        // console.log('useerrr education ', this.education);
+        this.educations = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  //========================= Get education ById ===============
+  onGetEducationById(id:any) {
+    this.authService.getEducationById(id).subscribe(
+      (data) => {
+        this.currentEducation = data;
+        console.log("current edu ",this.currentEducation);
       },
       (error) => {
         console.log(error);
@@ -118,15 +140,6 @@ export class StudProfileComponent implements OnInit {
       for(let s in skill){
         console.log("idd1 ",s);
       }
-      // this.authService.getSkills(this.experience).subscribe(
-      //   (data) => {
-      //     this.skills = data;
-      //     console.log('useerrr skills ', this.skills);
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //   }
-      // );
     });
 
   }
@@ -143,7 +156,46 @@ export class StudProfileComponent implements OnInit {
       }
     );
   }
+    //========================= Get Projects ById ===============
+    onGetProjectsById(id:any) {
+      this.authService.getProjectById(id).subscribe(
+        (data) => {
+          this.currentProject = data;
+          console.log('curent project', this.currentProject);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
 
+  //========================= Edit Education ====================
+  onEditEducation(id:any){
+    this.authService.editEducation(id,this.education).subscribe(
+      (response) => {
+        console.log('doonee edit', response);
+        this.refresh();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }  //========================= Edit Education ====================
+  onEditProject(id:any){
+    this.authService.editProject(id,this.project).subscribe(
+      (response) => {
+        console.log('doonee edit', response);
+        this.refresh();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  //============ refresh page ==============
+  refresh(): void {
+    window.location.reload();
+  }
   showModal(content) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
