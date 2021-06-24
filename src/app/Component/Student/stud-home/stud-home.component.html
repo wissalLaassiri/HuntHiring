@@ -22,8 +22,6 @@
               <input
                 class="form-control form-control-lg form-control"
                 type="search"
-                [(ngModel)]="key.search"
-                [ngModelOptions]="{ standalone: true }"
                 placeholder="Search by title or company name"
               />
             </div>
@@ -31,6 +29,8 @@
               <input
                 class="form-control form-control-lg form-control"
                 type="search"
+                [(ngModel)]="key.search"
+                                [ngModelOptions]="{ standalone: true }"
                 placeholder="City"
               />
             </div>
@@ -40,7 +40,7 @@
                 class="form-control"
                 (change)="changeOfferType($event)"
               >
-                <option disabled>Select Type</option>
+                <option >Select Type</option>
                 <option *ngFor="let t of type">{{ t.name }}</option>
               </select>
             </div>
@@ -109,7 +109,6 @@
             <div class="job-right my-4 flex-shrink-0">
               <a
                  (click)="onApply(o.id)"
-                routerLink="/student/organize"
                 class="btn d-block w-100 d-sm-inline-block btn-light"
                 style="background-color: #5d2a42; color: white"
                 >Apply now</a

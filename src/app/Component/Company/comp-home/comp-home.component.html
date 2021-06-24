@@ -77,7 +77,7 @@
 
             <div class="job-right my-4 flex-shrink-0">
               <div class="a2 btn d-block w-100 d-sm-inline-block btn-light">
-                <div class="a2" routerLink="../../company/editOffer/{{o.id}}">Edit Offer</div>
+                <div class="a2" (click)="onEditOffer(o.id)" >Edit Offer</div>
               </div>
             </div>
           </div>

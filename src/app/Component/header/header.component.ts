@@ -18,17 +18,17 @@ export class HeaderComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router,
     ) {
-      if (!this.tokenStorage.getToken()) {
-        console.log('not logged in');
-      } else {
-        console.log('logged in');
-      }
+      // if (!this.tokenStorage.getToken()) {
+      //   console.log('not logged in');
+      // } else {
+      //   console.log('logged in');
+      // }
      }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = !!this.tokenStorage.getToken();
-    }
+    // if (this.tokenStorage.getToken()) {
+    //   this.isLoggedIn = !!this.tokenStorage.getToken();
+    // }
   }
   logout(): void {
     this.tokenStorage.signOut();

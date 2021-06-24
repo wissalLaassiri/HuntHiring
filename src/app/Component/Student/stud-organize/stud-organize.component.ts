@@ -38,7 +38,7 @@ export class StudOrganizeComponent implements OnInit {
       this.onGetUser();
       this.onGetApplications();
     } else {
-      this.router.navigate(['']);
+      this.router.navigate(['/login']);
     }
   }
 

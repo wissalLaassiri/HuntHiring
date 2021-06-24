@@ -14,12 +14,12 @@ export class CompanyRegisterComponent implements OnInit {
   url = '';
   formError = {first_name:'',last_name:'', username: '', email: '', password: '',website_link: '',linkedin_link:'',city:'',domain:''};
  // submitted = false;
-
+  alert=false;
 
   @Input() userObj = { id:'',first_name:'',last_name:'', username: '', email: '', password: '',website_link: '',linkedin_link:'',city:'',domain:''}
   constructor(
     private formBuilder: FormBuilder,
-    public authService: AuthService, 
+    public authService: AuthService,
     private http: HttpClient,
     private router: Router
   ) { }
@@ -43,12 +43,12 @@ export class CompanyRegisterComponent implements OnInit {
     this.url = '/company/create/'
     this.authService.addUser(this.userObj,this.url).subscribe((response) => {
      console.log(response.email)
-      this.router.navigate(['/login'])
+      this.alert=true;
     },
     (error) => {
       this.formError = error;
     })
   }
-} 
- 
+}
+
 

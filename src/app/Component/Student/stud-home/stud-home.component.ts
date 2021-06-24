@@ -16,7 +16,7 @@ export class StudHomeComponent implements OnInit {
   isLoggedIn: boolean;
   url: string;
   student_name: string;
-  offers=[];
+  offers = [];
   type: any = [
     { id: 1, name: 'internship' },
     { id: 2, name: 'CDI' },
@@ -26,17 +26,27 @@ export class StudHomeComponent implements OnInit {
   form = new FormGroup({
     offer_type: new FormControl('', Validators.required),
   });
-
+  currentOffer: any;
   @Input() key = {
-    id:'',
-    search:''
-  }
-  application={
-    id:'',
-    offer:'',
+    id: '',
+    search: '',
+  };
+  application = {
+    id: '',
+    offer: '',
     date: new Date(),
-    note:''
-  }
+    note: '',
+  };
+  offer = {
+    id: '',
+    title: '',
+    offer_type: 1,
+    skills: [],
+    entreprise_name: '',
+    description: '',
+    link: '',
+    city: '',
+  };
   //====================================================
   constructor(
     public offerServicce: OfferService,
@@ -51,7 +61,7 @@ export class StudHomeComponent implements OnInit {
       this.onGetUser();
     }
   }
-//================ get authantified user =============
+  //================ get authantified user =============
   onGetUser() {
     this.authService.getRole().subscribe(
       (data) => {
@@ -65,11 +75,10 @@ export class StudHomeComponent implements OnInit {
     );
   }
   //============ get offers =============================
-  onGetOffers(){
+  onGetOffers() {
     this.offerServicce.getOffersByKey(this.key.search).subscribe(
       (data) => {
-        console.log('first home ', data);
-        this.offers= data;
+        this.offers = data;
         console.log('useerrr home ', this.offers);
       },
       (error) => {
@@ -77,15 +86,45 @@ export class StudHomeComponent implements OnInit {
       }
     );
   }
-  //=================== Application ====================
-  onApply(id:any){
-    this.url = '/application/';
-    console.log("offers id",this.application.date);
-    this.application.offer = id;
+  //================== get currentOffer ==========================
+  getCurrentOffer() {
+    this.offer.id = this.currentOffer.id;
+    this.offer.offer_type = this.currentOffer.offer_type;
+    this.offer.link = this.currentOffer.link;
+    this.offer.title = this.currentOffer.title;
+    this.offer.city = this.currentOffer.city;
+    this.offer.entreprise_name = this.currentOffer.entreprise_name;
+    this.offer.description = this.currentOffer.description;
 
+    console.log('iddd iss ', this.offer.offer_type);
+  }
+  //=================== Application ====================
+  onApply(id: any) {
+    this.url = '/application/';
+    console.log('offers id', this.application.date);
+    this.application.offer = id;
+    this.onGetOfferById(this.application.offer);
     this.authService.addApplication(this.application, this.url).subscribe(
       (response) => {
         console.log('doonee application', response);
+        console.log('doonee offer', this.currentOffer);
+
+        this.router.navigate(['/student/organize']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  //======================= get CurrentOffer ==========================
+  onGetOfferById(id: any) {
+    this.offerServicce.getOffersById(id).subscribe(
+      (data) => {
+        this.currentOffer = data;
+        if (this.currentOffer) {
+          console.log('current offer ', this.currentOffer);
+          this.getCurrentOffer();
+        }
       },
       (error) => {
         console.log(error);

@@ -14,7 +14,7 @@
               [(ngModel)]="offer.title"
               [ngModelOptions]="{ standalone: true }"
               id="offre_title"
-              value="{{ offer.title }}"
+              *ngIf="currentOffer"
               class="input-text"
             />
           </div>
@@ -28,7 +28,7 @@
               class="form-control"
               (change)="changeOfferType($event)"
             >
-              <option disabled>Select Website</option>
+              <option disabled>Select Type</option>
               <option *ngFor="let t of type">{{ t.name }}</option>
             </select>
           </div>
@@ -46,7 +46,7 @@
         </button>
         <h3>
           <span class="badge badge-primary" *ngFor="let s of skills">{{
-            s
+            s.name
           }}</span>
         </h3>
       </div>
@@ -106,14 +106,11 @@
         </div>
       </div>
 
-      <div class="form-row-last">
-        <input
-          (click)="onAddOffer()"
-          name="register"
-          class="btn"
-          value="Add Offer"
-        />
-      </div>
+      <div class="job-right my-4 flex-shrink-0">
+              <div class="a2 btn d-block w-100 d-sm-inline-block btn-light">
+                <div class="a2" (click)="onEditOffer(offer.id)" >Edit Offer</div>
+              </div>
+            </div>
     </form>
 
     <ng-template #modalData let-modal>

@@ -81,6 +81,16 @@ export class OfferService {
       catchError(this.handleError)
     );
   }
+    // ========================= get Skills by id ===========================
+    getSkillById(id : any): Observable<any> {
+      return this.http.get(this.endpoint + `/skill/${id}/`, this.httpOptions).pipe(
+        map((res) => {
+          const detail = res['body'];
+          return detail;
+        }),
+        catchError(this.handleError)
+      );
+    }
     // ========================= get Offers by search ===========================
     getOffersByKey(key : any): Observable<any> {
       let authToken = this.token.getUser();
@@ -94,7 +104,22 @@ export class OfferService {
       );
     }
 
-
+  //============================ Edit Offer ==================
+  editOffer(id: any, offer: any): Observable<any> {
+    return this.http
+      .put<HttpResponse<any>>(
+        this.endpoint + `/offer/${id}/`,
+        JSON.stringify(offer),
+        this.httpOptions
+      )
+      .pipe(
+        map((response) => {
+          return response.body;
+        }),
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
   //======================== Handle form errors ==========================
   handleError(error: HttpErrorResponse) {
     let msg = {};

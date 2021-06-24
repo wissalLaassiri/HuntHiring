@@ -45,13 +45,21 @@ export class CompHomeComponent implements OnInit {
     this.offerServicce.getOffers().subscribe(
       (data) => {
         console.log('first home ', data);
-        this.offer= data;
+        data.forEach(d => {
+          if(d.is_scraping==false)
+          {this.offer.push(d);}
+        });
         console.log('useerrr home ', this.offer);
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  onEditOffer(id:any){
+    this.router.navigate([`/company/editOffer/${id}/`]);
+    return id;
   }
 
   onGetUser() {

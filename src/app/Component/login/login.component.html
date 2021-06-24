@@ -47,24 +47,21 @@
       </div>
 
       <button class="btn" name="login" type="submit">Log In</button><br />
-      <div class="etc-login-form">
-        <p>forgot your password? <a href="#">click here</a></p>
-      </div>
-      <div class="etc-login-form">
-        <p>
-          you don't have an account yet?
-          <button class="link-primary" (click)="triggerModal(modalData)">
-            Register
-          </button>
-        </p>
-      </div>
     </form>
-
+    <div class="etc-login-form">
+      <p>forgot your password? <a href="#">click here</a></p>
+    </div>
+    <div class="etc-login-form">
+      <p>
+        you don't have an account yet?
+        <button class="link-primary" (click)="triggerModal(modalData)">
+          Register
+        </button>
+      </p>
+    </div>
     <ng-template #modalData let-modal>
       <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">
-          Register As
-        </h4>
+        <h4 class="modal-title" id="modal-basic-title">Register As</h4>
         <button
           type="button"
           class="close"
@@ -75,8 +72,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <a  href="CompanyRegister"><img class="icons" src="../../../assets/img/company.PNG"  alt="Card image cap"></a>
-        <a href="StudentRegister"><img class="icons" src="../../../assets/img/student.PNG"  alt="Card image cap"></a>
+        <a href="CompanyRegister"
+          ><img
+            class="icons"
+            src="../../../assets/img/company.PNG"
+            alt="Card image cap"
+        /></a>
+        <a href="StudentRegister"
+          ><img
+            class="icons"
+            src="../../../assets/img/student.PNG"
+            alt="Card image cap"
+        /></a>
       </div>
       <div class="modal-footer">
         <button

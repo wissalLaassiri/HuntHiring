@@ -21,10 +21,10 @@ export class IntroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.tokenStorageService.getToken()){
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
-      this.onGetUser();
-    }
+    // if(this.tokenStorageService.getToken()){
+    //   this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //   this.onGetUser();
+    // }
    }
    onGetUser() {
     this.authService.getRole().subscribe(

@@ -85,6 +85,7 @@ export class StudProfileComponent implements OnInit {
     this.authService.getEducationById(id).subscribe(
       (data) => {
         this.currentEducation = data;
+        this.education = data;
         console.log("current edu ",this.currentEducation);
       },
       (error) => {
