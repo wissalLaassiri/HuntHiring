@@ -11,18 +11,28 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular/animations": "^11.2.14",
     "@angular/cdk": "^12.0.1",
+=======
+    "@angular/animations": "~11.2.8",
+    "@angular/cdk": "^12.0.5",
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
     "@angular/common": "~11.2.8",
     "@angular/compiler": "~11.2.8",
     "@angular/core": "~11.2.8",
     "@angular/forms": "~11.2.8",
+<<<<<<< HEAD
     "@angular/material": "^12.0.1",
+=======
+    "@angular/material": "^11.2.13",
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
     "@angular/platform-browser": "~11.2.8",
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
     "@auth0/angular-jwt": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "^9.1.1",
+    "@popperjs/core": "^2.9.2",
     "bootstrap": "^4.6.0",
 <<<<<<< HEAD
     "jquery": "^3.6.0",
@@ -32,13 +42,18 @@
     "bootstrap-icons": "^1.5.0",
     "bootstrap-wizard": "^1.4.2",
     "glightbox": "^3.0.8",
-    "jquery": "^3.3.1",
+    "jquery": "^3.6.0",
     "jquery.steps": "^1.1.1",
     "material-design-iconic-font": "^2.2.0",
+<<<<<<< HEAD
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
+=======
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
     "rxjs": "~6.6.0",
     "smartwizard": "^5.1.1",
-    "swiper": "^6.6.2",
+    "swiper": "^6.7.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

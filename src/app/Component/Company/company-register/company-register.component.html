@@ -1,4 +1,7 @@
 <app-header></app-header>
+<!--<div class="alert alert-danger" role="alert">
+  Sorry, Your account will be activated after 24 hours
+</div>-->
   <div class="container">
     <div class="form ">
       <div class="heading">
@@ -61,7 +64,7 @@
         <label for="">Domain</label>
         <input [(ngModel)]="userObj.domain" class="form-control" placeholder="Domain" required>
         <span class="focus-input2"></span>
-       
+
       </div>
       <div class="wrap">
         <div class="f1">
@@ -82,11 +85,10 @@
         </div>
       </div>
       <button class="btn" (click)="addUser(userObj)">Register</button>
-    
+
     </div>
       <div class="image">
         <img src="../../assets/img/register comany.jpg" alt="">
       </div>
-    
+
   </div>
-  

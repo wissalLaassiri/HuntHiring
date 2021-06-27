@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 <<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +35,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './Component/header/header.component';
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
 
+import { MatSelectModule } from "@angular/material/select";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CompEditOfferComponent } from './Component/Company/comp-edit-offer/comp-edit-offer.component';
+import { StudHeaderComponent } from './Component/Student/stud-header/stud-header.component';
+import { StudProfileComponent } from './Component/Student/stud-profile/stud-profile.component';
+import { StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
+import { StudOrganizeComponent } from './Component/Student/stud-organize/stud-organize.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,10 +60,19 @@ import { HeaderComponent } from './Component/header/header.component';
     CompHomeComponent,
     CompHeaderComponent,
     CompNewOffersComponent,
+<<<<<<< HEAD
     HeaderComponent
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
+=======
+    HeaderComponent,
+    CompEditOfferComponent,
+    StudHeaderComponent,
+    StudProfileComponent,
+    StudHomeComponent,
+    StudOrganizeComponent
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -66,8 +85,11 @@ import { HeaderComponent } from './Component/header/header.component';
 =======
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [authInterceptorProviders
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
   ],

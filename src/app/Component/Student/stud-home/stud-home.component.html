@@ -1,0 +1,152 @@
+<header>
+  <app-stud-header></app-stud-header>
+
+  <div class="container">
+    <div class="header">
+      <br />
+
+      <div class="col-12 col-md-12 col-lg-12">
+        <h1>Start Hunting</h1>
+        <form
+          [formGroup]="form"
+          class="card card-sm"
+          style="background: rgba(0, 0, 0, 0.5); border-radius: 25px"
+          id="myform"
+        >
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-search h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col-searchMultiple">
+              <input
+                class="form-control form-control-lg form-control"
+                type="search"
+                [(ngModel)]="key.search"
+                [ngModelOptions]="{ standalone: true }"
+                placeholder="Search by title or company name"
+              />
+            </div>
+            <div class="col">
+              <input
+                class="form-control form-control-lg form-control"
+                type="search"
+                placeholder="City"
+              />
+            </div>
+            <div class="form-group select2">
+              <select
+                formControlName="offer_type"
+                class="form-control"
+                (change)="changeOfferType($event)"
+              >
+                <option disabled>Select Type</option>
+                <option *ngFor="let t of type">{{ t.name }}</option>
+              </select>
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+              <button
+                class="btn btn-lg btn-search"
+                (click)="onGetOffers()"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+      <!--end of col-->
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="career-search mb-60">
+        <div class="filter-result">
+          <div *ngFor="let o of offers"
+            class="
+              job-box
+              d-md-flex
+              align-items-center
+              justify-content-between
+              mb-30
+            ">
+            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+              <div
+                class="
+                  img-holder
+                  mr-md-4
+                  mb-md-0 mb-4
+                  mx-auto mx-md-0
+                  d-md-none d-lg-flex
+                "
+              >
+                FD
+              </div>
+              <div class="job-content">
+                <h5 class="text-center text-md-left">{{ o.title }}</h5>
+                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                  <li class="mr-md-4">
+                    <i class="zmdi zmdi-pin mr-2"></i> {{o.city}}
+                  </li>
+                  <li class="mr-md-4">
+                     <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==1">Internship</i>
+                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==2" >CDD</i>
+                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==3" >CDI</i>
+                  <i class="zmdi zmdi-money mr-2" *ngIf="o.offer_type==4" >Freelance</i>
+                  </li>
+                  <li class="mr-md-4">
+                  <i class="zmdi zmdi-time mr-2"></i> {{o.created_on | date}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-right my-4 flex-shrink-0">
+              <a
+                 (click)="onApply(o.id)"
+                routerLink="/student/organize"
+                class="btn d-block w-100 d-sm-inline-block btn-light"
+                style="background-color: #5d2a42; color: white"
+                >Apply now</a
+              >
+            </div>
+          </div>
+
+          <nav *ngIf="offers.length>0" aria-label="Page navigation">
+            <ul class="pagination pagination-reset justify-content-center">
+              <li class="page-item disabled">
+                <a
+                  class="page-link"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                >
+                  <i class="zmdi zmdi-long-arrow-left"></i>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item d-none d-md-inline-block">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item d-none d-md-inline-block">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="zmdi zmdi-long-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

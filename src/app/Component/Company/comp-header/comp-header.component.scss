@@ -127,8 +127,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo {
-  width: 100px;
-  height: 104px;
+  width: 140px;
+  height: 100px;
+  margin-left: -58%;
 }
 
 #header .logo a {
@@ -170,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -295,7 +296,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #222222;

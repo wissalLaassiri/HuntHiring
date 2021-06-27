@@ -2,6 +2,7 @@
 <nav class="navbar navbar-fixed-top">
     <a routerLink=""><img src="../../../assets/img/logo.png" class="logo" alt=""></a>
     <a routerLink="/login">
-    <button class="btn btn-hh" type="submit">Start Hunting</button>    
+    <button class="btn btn-hh" *ngIf="!isLoggedIn" type="submit">Start Hunting</button>
+    <button class="btn btn-hh" *ngIf="isLoggedIn" (click)="logout()" >logOut</button>
     </a>
 </nav>

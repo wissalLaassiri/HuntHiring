@@ -88,12 +88,12 @@ export class LoginComponent implements OnInit {
   redirectUser() {
     if (this.tokenStorage.type === '"STUDENT"') {
       console.log('============== log im stuud');
-      this.router.navigate(['/index']);
+      this.router.navigate(['/student/home']);
     } else {
       if (this.tokenStorage.type === '"COMPANY"') {
         console.log('======= loog Compaaaa');
         this.router.navigate(['/company/home']);
-      } 
+      }
     }
   }
 }

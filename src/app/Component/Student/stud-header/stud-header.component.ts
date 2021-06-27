@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Authentification/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-stud-header',
+  templateUrl: './stud-header.component.html',
+  styleUrls: ['./stud-header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class StudHeaderComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -18,20 +18,26 @@ export class HeaderComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router,
     ) {
-      if (!this.tokenStorage.getToken()) {
-        console.log('not logged in');
-      } else {
-        console.log('logged in');
-      }
+
      }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = !!this.tokenStorage.getToken();
+
+  }
+
+  header_variable= false;
+  @HostListener("document:scroll")
+  scrollfunction(){
+    if(document.body.scrollTop > 0 || document.documentElement.scrollTop>0){
+      this.header_variable=true;
+    }
+    else{
+      this.header_variable = false;
     }
   }
   logout(): void {
     this.tokenStorage.signOut();
     this.router.navigate(['/']);
   }
+
 }

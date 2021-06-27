@@ -14,10 +14,9 @@
               [(ngModel)]="offer.title"
               [ngModelOptions]="{ standalone: true }"
               id="offre_title"
+              value="{{ offer.title }}"
               class="input-text"
-            /><div *ngIf="formError['title']" class="alert alert-warning">
-                <strong> {{ formError["title"] | json }}</strong>
-              </div>
+            />
           </div>
 
         </div>
@@ -62,9 +61,7 @@
           id="entreprise_name"
           class="input-text"
         />
-        <div *ngIf="formError['entreprise_name']" class="alert alert-warning">
-          <strong> {{ formError["entreprise_name"] | json }}</strong>
-        </div>
+
       </div>
       <div class="form-row">
         <label for="title">Description</label>
@@ -73,11 +70,10 @@
           [(ngModel)]="offer.description"
           [ngModelOptions]="{ standalone: true }"
           id="description"
+          value="{{ offer.description }}"
           class="input-text"
         />
-        <div *ngIf="formError['description']" class="alert alert-warning">
-          <strong> {{ formError["description"] | json }}</strong>
-        </div>
+
       </div>
 
       <div class="wrap">
@@ -89,6 +85,7 @@
               [(ngModel)]="offer.link"
               [ngModelOptions]="{ standalone: true }"
               id="link"
+              value="{{ offer.link }}"
               class="input-text"
             />
           </div>
@@ -101,11 +98,10 @@
               [(ngModel)]="offer.city"
               [ngModelOptions]="{ standalone: true }"
               id="city"
+              value="{{ offer.city }}"
               class="input-text"
             />
-            <div *ngIf="formError['city']" class="alert alert-warning">
-              <strong> {{ formError["city"] | json }}</strong>
-            </div>
+
           </div>
         </div>
       </div>

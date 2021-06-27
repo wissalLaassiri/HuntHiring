@@ -15,7 +15,14 @@ import {StudentRegisterComponent} from './Component/Student/student-register/stu
 import { CompanyRegisterComponent } from './Component/Company/company-register/company-register.component';
 import {CompHomeComponent} from './Component/Company/comp-home/comp-home.component';
 import { CompNewOffersComponent } from './Component/Company/comp-new-offers/comp-new-offers.component';
+<<<<<<< HEAD
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
+=======
+import {CompEditOfferComponent} from './Component/Company/comp-edit-offer/comp-edit-offer.component';
+import {StudProfileComponent } from './Component/Student/stud-profile/stud-profile.component';
+import {StudHomeComponent } from './Component/Student/stud-home/stud-home.component';
+import {StudOrganizeComponent} from './Component/Student/stud-organize/stud-organize.component';
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
 const routes: Routes = [
   {
     path: '',
@@ -61,7 +68,26 @@ const routes: Routes = [
   {
     path: 'company/addOffer',
     component:CompNewOffersComponent
+<<<<<<< HEAD
 >>>>>>> 2a6d684e2160c41a96bed217efe8905723506591
+=======
+  },
+  {
+    path: 'company/editOffer/:id',
+    component:CompEditOfferComponent
+  },
+  {
+    path: 'student/profile',
+    component:StudProfileComponent
+  },
+  {
+    path: 'student/home',
+    component:StudHomeComponent
+  },
+  {
+    path: 'student/organize',
+    component: StudOrganizeComponent
+>>>>>>> d8ce5e6bc1816c4c2695586e3943be377de9565a
   }
 ];
 @NgModule({

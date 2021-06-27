@@ -1,3 +1,4 @@
+import { OfferService } from 'src/app/services/Offer/offer.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,10 +12,17 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class CompHomeComponent implements OnInit {
   public user;
-
+  offer = [];
+  type: any = [
+    { id: 1, name: 'internship' },
+    { id: 2, name: 'CDI' },
+    { id: 3, name: 'CDD' },
+    { id: 4, name: 'freelance' },
+  ];
   constructor(
     private token: TokenStorageService,
     private authService: AuthService,
+    public offerServicce: OfferService,
     private router: Router
   ) {
     if (!this.token.getToken()) {
@@ -27,9 +35,23 @@ export class CompHomeComponent implements OnInit {
   ngOnInit(): void {
     if (this.token.getToken()) {
       this.onGetUser();
+      this.onGetOffers();
     } else {
       this.router.navigate(['']);
     }
+  }
+
+  onGetOffers(){
+    this.offerServicce.getOffers().subscribe(
+      (data) => {
+        console.log('first home ', data);
+        this.offer= data;
+        console.log('useerrr home ', this.offer);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   onGetUser() {
@@ -40,6 +62,7 @@ export class CompHomeComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.router.navigate(['/login']);
       }
     );
   }
